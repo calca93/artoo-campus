@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <base href="/">
@@ -9,7 +9,39 @@
     <link rel="stylesheet" href="ui/appbar/appbar.css">
   </head>
   
-  <body ng-app="artooInit"> <!-- bootstrap the app with your module -->
+  <body ng-app="artooInit"> <!-- bootstrap the app with your module 
+    <appbar>
+      <div class="image">
+        <img src="public/artoo-logo.png" alt="ArToo logo">
+      </div>
+      <ul class="breadcrumbs">
+        <li><a href="/">Codebase</a></li>
+        <li><a href>Init Angular</a></li>
+      </ul>
+    </appbar>
+    
+    <div ng-init="foo='Hooray! AngularJS is up and running!'" ng-bind="foo"></div>
+    <!-- load angular
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    
+    
+    <!-- load app module 
+    <script src="subjects/init/app.js"></script>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Artoo Campus - Init Angular</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="ui/appbar/appbar.css">
+  </head>
+  <!-- il browser cerca ng-app -->
+  <body ng-app="artooinit"> <!-- bootstrap the app with your module -->
     <appbar>
       <div class="image">
         <img src="public/artoo-logo.png" alt="ArToo logo">
@@ -22,10 +54,10 @@
     
     <div ng-init="foo='Hooray! AngularJS is up and running!'" ng-bind="foo"></div>
     <!-- load angular -->
-    <script src="node_modules/angular/angular.min.js"></script>
-    
-    
     <!-- load app module -->
-    <script src="subjects/init/app.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/subjects/init/app.js"></script>
   </body>
 </html>
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Priv
