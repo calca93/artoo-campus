@@ -58,7 +58,7 @@ textarea + label {
 }
 
 input[type="text"]:focus, input[type="password"]:focus {
-  padding-left: 10px; 
+  padding-left: 10px;
 }
 
 textarea:focus {
@@ -157,6 +157,7 @@ input[type="checkbox"] + label {
   }
 }
 
+
 input[type="checkbox"]:checked + label {
   background: #0288D1;
   &:after {
@@ -184,4 +185,13 @@ button {
 
 button:focus {
   outline: none;
+}
+
+button[disabled] {
+  opacity: .5;
+  pointer-events: none;
+}
+
+textarea {
+  resize: none;
 }
