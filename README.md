@@ -39,7 +39,8 @@ npm install
 Transport Manager.
 
 ### Features
-* Create form to collect new transports
-* Show list of transports with details
-* Calculate distance from start to destination, show little map, using Google Maps API
-* Login nedded to insert records
+* As admin, Create form to collect new transports
+* As admin, Show list of transports with details
+* As admin, Calculate distance from start to destination, show little map, using Google Maps API
+* As admin, Login needed to insert records
+*
