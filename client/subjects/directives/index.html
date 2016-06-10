@@ -1,33 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <base href="/">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
-    <title>Artoo Campus - Directives</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="ui/appbar/appbar.css">
-  </head>
-  
-  <body ng-app="artoo">
-    <appbar></appbar>
-    
-    <!-- interpolate all items -->
-    
-    <!-- show only suitable items -->
-    
-    <!-- show only items within a certain size -->
-    
-    <!-- manage the handle "buy an item" -->
-    
-    <!-- show items as unavailable when their availability is 0 -->
-    
-    <!-- show pictures -->
-    
-    <!-- bind external links -->
-    
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="ui/appbar/appbar.js"></script>
-    <script src="subjects/directives/app.js"></script>
-  </body>
-</html>
+   <!DOCTYPE html>
+   <html>
+      <head>
+      <base href="/">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width">
+      <title>Artoo Campus - Directives</title>
+      <link rel="stylesheet" href="main.css">
+      <link rel="stylesheet" href="ui/appbar/appbar.css">
+      <link rel="stylesheet" href="subjects/directives/style.css">
+   </head>
+
+   <body ng-app="artoo">
+      <appbar></appbar>
+
+      <!-- interpolate all items -->
+      <div ng-controller="ItemsCtrl">
+         <ul>
+            <li class="item" ng-repeat="item in items"
+               ng-class="{unavailable: item.availability === 0, available: item.availability > 0}">
+               {{item.name}}, {{item.availability}}
+               <p>Index: {{$index}}</p>
+               <p>First? {{$first}}</p>
+               <p>Last? {{$last}}</p>
+               <p>Odd? {{$odd}}</p>
+               <p>Even? {{$even}}</p>
+               <button ng-show="item.availability" ng-click="buy(item)">Buy</button>
+            </li>
+         </ul>
+      </div>
+
+
+      <!-- show only suitable items -->
+      <!-- show only items within a certain size -->
+      <!-- manage the handle "buy an item" -->
+      <!-- show items as unavailable when their availability is 0 -->
+      <!-- show pictures -->
+      <!-- bind external links -->
+      <script src="node_modules/angular/angular.min.js"></script>
+      <script src="ui/appbar/appbar.js"></script>
+      <script src="subjects/directives/app.js"></script>
+      <script src="subjects/directives/items.controller.js"></script>
+      </body>
+   </html>
