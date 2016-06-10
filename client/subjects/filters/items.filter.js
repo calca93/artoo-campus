@@ -26,4 +26,11 @@ angular.module('artoo')
       return function (input) {
          return input.indexOf(race) > -1;
       };
+   })
+
+   .filter('suitability', function(PlayerSrv){
+      var race = PlayerSrv.get().race;
+      return function (input, active) {
+         return (active && input.filter(singleItem => singleItem.races.indexOf(race) > -1)) || input;
+      };
    });

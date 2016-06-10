@@ -36,6 +36,10 @@
          <input type="text" ng-model="search[selectedFilterProp]">
 
          <form>
+            <label>Suitability
+               <input type="checkbox" ng-model="onlySuitable">
+            </label>
+
             <label> All
                <input type="radio" ng-model="selectedFilterProp" value="$">
             </label>
@@ -49,7 +53,7 @@
 
          <h2>Items</h2>
          <ul style="list-style: none">
-            <li ng-repeat="item in items | filter:search | orderBy:selectedOrderByOptions:selectedReverse ">
+            <li ng-repeat="item in items | suitability:onlySuitable | filter:search | orderBy:selectedOrderByOptions:selectedReverse ">
                <h3>{{::item.name}}, {{::item.price | price}}, {{::item.availability | availability}}</h3>
                <p>{{::item.description}}</p>
                <p>Races: {{::item.races | races}}</p>
