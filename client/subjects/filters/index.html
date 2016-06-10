@@ -1,39 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <base href="/">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
-    <title>Artoo Campus - Filters</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="ui/appbar/appbar.css">
-    <link rel="stylesheet" href="ui/form/form.css">
-  </head>
-  
-  <body ng-app="artoo">
-    <appbar></appbar>
-    
-    <!-- get a list of items -->
-    <ul>
-      <li ng-repeat="item in ::items">{{::item}}</li>
-    </ul>
-    
-    <!-- sort items by price -->
-    
-    <!-- sort items by name -->
-    
-    <!-- filter items for name -->
-    
-    <!-- implement a filter for prices -->
-    
-    <!-- implement a filter for availability -->
-    
-    <!-- implement a filter for suitabilty -->
-    
-    <!-- implement a filter for races -->
-    
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="ui/appbar/appbar.js"></script>
-    <script src="subjects/filters/app.js"></script>
-  </body>
+   <head>
+      <base href="/">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width">
+      <title>Artoo Campus - Filters</title>
+      <link rel="stylesheet" href="main.css">
+      <link rel="stylesheet" href="ui/appbar/appbar.css">
+      <!--<link rel="stylesheet" href="ui/form/form.css">-->
+   </head>
+
+   <body ng-app="artoo">
+      <appbar></appbar>
+
+      <div ng-controller="ItemsCtrl">
+      <!-- get a list of items -->
+
+         <h2>Order By</h2>
+         <select name="orderByOptions"
+            ng-options="option.prop as option.title for option in orderByOptions"
+            ng-model="selectedOrderByOptions">
+         </select>
+
+
+         <label>Reverse?
+            <input type="checkbox" ng-model="selectedReverse">
+         </label>
+
+         <h2>Filter</h2>
+         <input type="text" ng-model="search[selectedFilterProp]">
+
+         <form>
+            <label> All
+               <input type="radio" ng-model="selectedFilterProp" value="$">
+            </label>
+            <label>Name
+               <input type="radio" ng-model="selectedFilterProp" value="name">
+            </label>
+            <label>Description
+               <input type="radio" ng-model="selectedFilterProp" value="description">
+            </label>
+         </form>
+
+         <h2>Items</h2>
+         <ul style="list-style: none">
+            <li ng-repeat="item in items | filter:search | orderBy:selectedOrderByOptions:selectedReverse ">
+               <h3>{{::item.name}}, {{::item.price}} G, {{::item.availability}} pieces</h3>
+               <p>{{::item.description}}</p>
+               <hr>
+            </li>
+         </ul>
+      </div>
+
+      <!-- sort items by price -->
+
+      <!-- sort items by name -->
+
+      <!-- filter items for name -->
+
+      <!-- implement a filter for prices -->
+
+      <!-- implement a filter for availability -->
+
+      <!-- implement a filter for suitabilty -->
+
+      <!-- implement a filter for races -->
+
+      <script src="node_modules/angular/angular.min.js"></script>
+      <script src="ui/appbar/appbar.js"></script>
+      <script src="subjects/filters/app.js"></script>
+      <script src="subjects/filters/items.controller.js"></script>
+   </body>
 </html>
