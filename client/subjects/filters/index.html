@@ -16,6 +16,11 @@
       <div ng-controller="ItemsCtrl">
       <!-- get a list of items -->
 
+      <!-- sort items by price -->
+
+      <!-- sort items by name -->
+
+      <!-- filter items for name -->
          <h2>Order By</h2>
          <select name="orderByOptions"
             ng-options="option.prop as option.title for option in orderByOptions"
@@ -45,18 +50,16 @@
          <h2>Items</h2>
          <ul style="list-style: none">
             <li ng-repeat="item in items | filter:search | orderBy:selectedOrderByOptions:selectedReverse ">
-               <h3>{{::item.name}}, {{::item.price}} G, {{::item.availability}} pieces</h3>
+               <h3>{{::item.name}}, {{::item.price | price}}, {{::item.availability | availability}}</h3>
                <p>{{::item.description}}</p>
+               <p>Races: {{::item.races | races}}</p>
+               <p>Suitable? {{::item.races | suitable | yesOrNo}}</p>
+               <p>Created day: {{item.createdAt | date:'dd/MM/yyyy'}} at {{item.createdAt | date:'hh:mm:ss:ms'}}</p>
                <hr>
             </li>
          </ul>
       </div>
 
-      <!-- sort items by price -->
-
-      <!-- sort items by name -->
-
-      <!-- filter items for name -->
 
       <!-- implement a filter for prices -->
 
@@ -70,5 +73,8 @@
       <script src="ui/appbar/appbar.js"></script>
       <script src="subjects/filters/app.js"></script>
       <script src="subjects/filters/items.controller.js"></script>
+      <script src="subjects/filters/items.filter.js"></script>
+      <script src="subjects/filters/player.service.js"></script>
+      <script src="subjects/filters/text.filter.js"></script>
    </body>
 </html>

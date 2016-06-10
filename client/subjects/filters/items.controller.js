@@ -7,6 +7,7 @@ angular.module('artoo').controller('ItemsCtrl', function ($scope) {
          image: 'http://khazalidgrungron.altervista.org/axes/05.png',
          price: 3.5,
          availability: 3,
+         createdAt: new Date(),
          races: ['human', 'dwarf'],
       }, {
          name: 'Katana',
@@ -15,6 +16,7 @@ angular.module('artoo').controller('ItemsCtrl', function ($scope) {
          image: 'http://www.clker.com/cliparts/5/s/J/S/8/i/wakisashi-sword.svg',
          price: 4,
          availability: 0,
+         createdAt: new Date(),
          races: ['human', 'elf'],
       }, {
          name: 'Pugnale',
@@ -23,6 +25,7 @@ angular.module('artoo').controller('ItemsCtrl', function ($scope) {
          image: 'http://www.dailyclipart.net/wp-content/uploads/medium/Pirates3.jpg',
          price: 2.99,
          availability: 4,
+         createdAt: new Date(),
          races: ['human', 'elf', 'dwarf'],
       }, {
          name: 'Shuriken',
@@ -31,6 +34,7 @@ angular.module('artoo').controller('ItemsCtrl', function ($scope) {
          image: 'http://www.karatemart.com/images/products/large/tiny-typhoon-shuriken.jpg',
          price: 1,
          availability: 2,
+         createdAt: new Date(),
          races: ['human', 'elf'],
       },];
 
@@ -44,6 +48,6 @@ angular.module('artoo').controller('ItemsCtrl', function ($scope) {
          prop: 'availability',
          title: 'Availability',
       },];
-      
+
       $scope.selectedFilterProp = '$';
 });
