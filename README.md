@@ -36,11 +36,20 @@ npm install
 ![Quests 4](https://assets.moqups.com/57dqoZC60v/Page_1.png)
 
 ## Project
-Transport Manager.
+Transport Manager
+
+### Entities
+* Transport
+* Admin
+* User
 
 ### Features
-* As admin, Create form to collect new transports
-* As admin, Show list of transports with details
-* As admin, Calculate distance from start to destination, show little map, using Google Maps API
-* As admin, Login needed to insert records
-*
+* As admin, create form to collect new transports
+* As admin, show list of transports with details
+* As admin, modify a transport
+* As admin, archive a transport
+* As admin, calculate distance from start to destination, show little map, using Google Maps API
+* As admin, login needed to insert records
+* As user, insert a code and see some information about a transport
+* A transport has a id used as a code to see details
+* A transport can be geolocated (optional)
