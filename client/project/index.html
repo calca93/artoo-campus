@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <base href="/">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
-    <title>Artoo Campus - Project</title>
-  </head>
-  
-  <body style="margin: 0;">
-    <!-- to be removed -->
-    <div style="align-items: center; display:flex; flex-direction: column; height: 100vh; justify-content: center;">
-      <h1 style="border: 2px dashed #dedede; color: #dedede; padding: 50px;">Place here your project!</h1>
-    </div>
-  </body>
+   <head>
+      <base href="/">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width">
+      <title>Artoo Campus - Project</title>
+      <link rel="stylesheet" href="main.css">
+      <link rel="stylesheet" href="ui/appbar/appbar.css">
+      <link rel="stylesheet" href="ui/form/form.css">
+   </head>
+
+   <body ng-app="tm">
+   	<div ng-controller="TransportCtrl">
+   		<div ng-repeat="transport in TransportSrv.get()">
+   			{{transport.customer}}
+   			{{transport.placeLoad}}
+   			{{transport.placeUnload}}
+   			{{transport.dateLoad}}
+   			{{transport.dateUnload}}
+   		</div>
+   	</div>
+
+
+
+   	<!--Javascripts -->
+		<script src="node_modules/angular/angular.min.js"></script>
+	   <script src="project/app.js"></script>
+	   <script src="project/transport/transport.controller.js"></script>
+	   <script src="project/transport/transport.service.js"></script>
+	  	<script src="project/transport/transport.filter.js"></script>
+  	</body>
 </html>
