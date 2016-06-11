@@ -11,15 +11,18 @@
    </head>
 
    <body ng-app="tm">
+
    	<div ng-controller="TransportCtrl">
    		<div ng-repeat="transport in TransportSrv.get()">
-   			{{transport.customer}}
-   			{{transport.placeLoad}}
-   			{{transport.placeUnload}}
-   			{{transport.dateLoad}}
-   			{{transport.dateUnload}}
+   			<div>Customer: {{transport.customer}}</div>
+   			<div>Load to: {{transport.placeLoad}}</div>
+   			<div>Unload to: {{transport.placeUnload}}</div>
+   			<div>Date load: {{transport.dateLoad}}</div>
+   			<div>Date unload: {{transport.dateUnload}}</div>
+   			<button ng-click="TransportSrv.remove(transport)">Remove</button>
    		</div>
    	</div>
+
 
 
 

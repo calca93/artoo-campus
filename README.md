@@ -29,7 +29,7 @@ Transport Manager
    * Service
    * Controller
    * Filter
-   * Directives - <list> and <manager> (?)
+   * Directives - \<list\> and \<manager\> (?)
    * Prop
       * id
       * customer
