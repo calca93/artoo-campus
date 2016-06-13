@@ -9,4 +9,4 @@
    </label>
 </form>
 
-<item data="item" ng-repeat="item in itemsCtrl.ItemsSrv.get(ItemsCtrl.typology)"></item>
+<item data="item" onDelete="itemsCtrl.ItemsSrv.remove(item)" ng-repeat="item in itemsCtrl.ItemsSrv.get(ItemsCtrl.typology)"></item>

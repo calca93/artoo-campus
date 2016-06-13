@@ -73,4 +73,8 @@ angular.module('artoo').service('ItemsSrv', function(){
    this.get = (typology) => {
       return items[typology];
    };
+
+   this.remove = (item) => {
+      console.log("Removing item: "+ item);
+   };
 });

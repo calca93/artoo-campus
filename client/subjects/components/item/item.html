@@ -1,3 +1,4 @@
 <div>Name: {{itemCtrl.item.name}}</div>
 <div>Description: {{itemCtrl.item.description}}</div>
 <img ng-src="{{itemCtrl.item.image}}" alt="{{itemCtrl.item.name}}" >
+<button ng-click="itemCtrl.onDelete({item: itemCtrl.item})">Remove</button>
