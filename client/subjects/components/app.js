@@ -1,18 +1,18 @@
 //define app module
 var app = angular
-  .module('artooInit', [])
+  .module('artoo', [])
   .run(function(){
-    console.info("Run from setter");
-  });
-  
-angular
-  .module('artooInit')
-  //.config(angular.noop)
-  .run(() => {
-    console.info('Run from getter!');
+    // console.info("Run from setter");
   });
 
-app.run(function(){
-  console.info("Run from a var");
-})
-//define run function
+// angular
+//   .module('artoo')
+//   //.config(angular.noop)
+//   .run(() => {
+//     console.info('Run from getter!');
+//   });
+
+// app.run(function(){
+//   console.info("Run from a var");
+// })
+// //define run function
