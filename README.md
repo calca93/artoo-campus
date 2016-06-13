@@ -38,6 +38,7 @@ Transport Manager
       * dateLoad
       * dateUnload
       * weigth
+      * price
       * length (optional)
 * Truck
    * Service
