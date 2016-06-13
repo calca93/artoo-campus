@@ -9,6 +9,15 @@ angular.module('tm').service('TransportSrv', function(){
          dateUnload: '25/05/2016',
          weigth: '50',
          archived: false,
+      }, {
+         id: '02',
+         customer: 'Company A',
+         placeLoad: 'Montecassiano',
+         placeUnload: 'Ancona',
+         dateLoad: '23/05/2016',
+         dateUnload: '25/05/2016',
+         weigth: '50',
+         archived: false,
       },
    ];
 
@@ -17,7 +26,6 @@ angular.module('tm').service('TransportSrv', function(){
    };
 
    this.remove = (transport) => {
-      console.log(transport)
       transports = transports.filter(singleItem => singleItem.id != transport.id);
    };
 

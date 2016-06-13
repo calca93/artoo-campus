@@ -1,0 +1,26 @@
+<table>
+   <thead>
+      <tr>
+         <td>Customer</td>
+         <td>Place Load</td>
+         <td>Place Unload</td>
+         <td>Date Load</td>
+         <td>Date Unload</td>
+         <td>Weight (q)</td>
+         <td>Archived</td>
+      </tr>
+   </thead>
+   <tbody>
+      <tr ng-repeat="transport in transportCtrl.TransportSrv.get()">
+         <td>{{transport.customer}}</td>
+         <td>{{transport.placeLoad}}</td>
+         <td>{{transport.placeUnload}}</td>
+         <td>{{transport.dateLoad}}</td>
+         <td>{{transport.dateUnload}}</td>
+         <td>{{transport.weigth}}</td>
+         <td>{{transport.archived}}</td>
+         <td><button ng-click="transportCtrl.TransportSrv.remove(transport)">Archive</button></td>
+      </tr>
+   </tbody>
+
+</table>

@@ -12,16 +12,20 @@
 
    <body ng-app="tm">
 
-   	<div ng-controller="TransportCtrl">
-   		<div ng-repeat="transport in TransportSrv.get()">
-   			<div>Customer: {{transport.customer}}</div>
-   			<div>Load to: {{transport.placeLoad}}</div>
-   			<div>Unload to: {{transport.placeUnload}}</div>
-   			<div>Date load: {{transport.dateLoad}}</div>
-   			<div>Date unload: {{transport.dateUnload}}</div>
-   			<button ng-click="TransportSrv.remove(transport)">Remove</button>
-   		</div>
-   	</div>
+   	<list></list>
+
+
+   	<!--<div ng-controller="TransportCtrl">-->
+   	<!--	<div ng-repeat="transport in TransportSrv.get()">-->
+   	<!--		<div>Customer: {{transport.customer}}</div>-->
+   	<!--		<div>Load to: {{transport.placeLoad}}</div>-->
+   	<!--		<div>Unload to: {{transport.placeUnload}}</div>-->
+   	<!--		<div>Date load: {{transport.dateLoad}}</div>-->
+   	<!--		<div>Date unload: {{transport.dateUnload}}</div>-->
+   	<!--		<button ng-click="TransportSrv.remove(transport)">Remove</button>-->
+   	<!--	</div>-->
+   	<!--</div>-->
+
 
 
 
@@ -32,5 +36,6 @@
 	   <script src="project/transport/transport.controller.js"></script>
 	   <script src="project/transport/transport.service.js"></script>
 	  	<script src="project/transport/transport.filter.js"></script>
+	  	<script src="project/transport/list.component.js"></script>
   	</body>
 </html>
