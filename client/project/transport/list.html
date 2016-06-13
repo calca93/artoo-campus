@@ -1,3 +1,8 @@
+<select name="showOptions"
+   ng-options="option.prop as option.title for option in transportCtrl.showOptions"
+   ng-model="selectedShowOptions">
+</select>
+
 <table>
    <thead>
       <tr>
@@ -11,7 +16,7 @@
       </tr>
    </thead>
    <tbody>
-      <tr ng-repeat="transport in transportCtrl.TransportSrv.get()">
+      <tr ng-repeat="transport in transportCtrl.TransportSrv.get() | typeShow:selectedShowOptions">
          <td>{{transport.customer}}</td>
          <td>{{transport.placeLoad}}</td>
          <td>{{transport.placeUnload}}</td>
@@ -19,7 +24,7 @@
          <td>{{transport.dateUnload}}</td>
          <td>{{transport.weigth}}</td>
          <td>{{transport.archived}}</td>
-         <td><button ng-click="transportCtrl.TransportSrv.remove(transport)">Archive</button></td>
+         <td><button ng-click="transportCtrl.TransportSrv.archive(transport)">Archive</button></td>
       </tr>
    </tbody>
 

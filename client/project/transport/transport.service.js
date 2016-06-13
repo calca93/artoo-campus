@@ -3,19 +3,19 @@ angular.module('tm').service('TransportSrv', function(){
       {
          id: '01',
          customer: 'Company A',
-         placeLoad: 'Montecassiano',
+         placeLoad: 'Recanati',
          placeUnload: 'Ancona',
          dateLoad: '23/05/2016',
          dateUnload: '25/05/2016',
-         weigth: '50',
+         weigth: '30',
          archived: false,
       }, {
          id: '02',
-         customer: 'Company A',
+         customer: 'Company B',
          placeLoad: 'Montecassiano',
-         placeUnload: 'Ancona',
-         dateLoad: '23/05/2016',
-         dateUnload: '25/05/2016',
+         placeUnload: 'Macerata',
+         dateLoad: '07/02/2016',
+         dateUnload: '04/02/2016',
          weigth: '50',
          archived: false,
       },
@@ -31,7 +31,8 @@ angular.module('tm').service('TransportSrv', function(){
 
    this.archive = (transport) => {
       transports.forEach(function(singleTr){
-         if(singleTr.id === transport.id) transports.archive = true;
+         if(singleTr.id == transport.id)
+            transport.archived = true;
       });
    };
 
