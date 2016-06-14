@@ -1,31 +1,48 @@
-<select name="showOptions"
-   ng-options="option.prop as option.title for option in transportCtrl.showOptions"
-   ng-model="selectedShowOptions">
-</select>
 
-<table>
-   <thead>
-      <tr>
-         <td>Customer</td>
-         <td>Place Load</td>
-         <td>Place Unload</td>
-         <td>Date Load</td>
-         <td>Date Unload</td>
-         <td>Weight (q)</td>
-         <td>Archived</td>
-      </tr>
-   </thead>
-   <tbody>
-      <tr ng-repeat="transport in transportCtrl.TransportSrv.get() | typeShow:selectedShowOptions">
-         <td>{{transport.customer}}</td>
-         <td>{{transport.placeLoad}}</td>
-         <td>{{transport.placeUnload}}</td>
-         <td>{{transport.dateLoad}}</td>
-         <td>{{transport.dateUnload}}</td>
-         <td>{{transport.weigth}}</td>
-         <td>{{transport.archived}}</td>
-         <td><button ng-click="transportCtrl.TransportSrv.archive(transport)">Archive</button></td>
-      </tr>
-   </tbody>
+<md-toolbar layout="row" class="md-hue-3">
+   <div class="md-toolbar-tools">
+      <strong>List of Transports</strong>
+   </div>
+</md-toolbar>
 
-</table>
+<md-content layout-margin layout-padding>
+   <md-input-container class="md-block" flex="20">
+      <label>Show</label>
+      <md-select ng-model="selectedShowOptions" ng-init="selectedShowOptions = selectedShowOptions || 'progress'">
+         <md-option ng-repeat="option in transportCtrl.showOptions" value="{{option.prop}}">
+            {{option.title}}
+         </md-option>
+      </md-select>
+   </md-input-container>
+
+   <md-list>
+      <div layout="column" layout-align=""center stretch"">
+         <md-list-item class="md-3-line" ng-repeat="transport in transportCtrl.TransportSrv.get() | typeShow:selectedShowOptions" ng-click="null">
+
+            <div class="md-list-item-text" layout="column">
+               <h3>{{transport.customer}}</h3>
+            </div>
+            <div class="md-list-item-text" layout="column">
+               From: <strong>{{transport.start}}</strong>
+               To: <strong>{{transport.destination}}</strong>
+            </div>
+            <div class="md-list-item-text" layout="column">
+               <div>Load address: {{transport.placeLoad}}</div>
+               <div>Unload address: {{transport.placeUnload}}</div>
+            </div>
+            <div class="md-list-item-text" layout="column">
+               <div>Date Load: {{transport.dateLoad}}</div>
+               <div>Date Unload: {{transport.dateUnload}}</div>
+            </div>
+            <div class="md-list-item-text" layout="column">
+               <div>Weight (q): {{transport.weigth}}</div>
+               <div>Price: {{transport.cost}}€</div>
+            </div>
+            <div class="md-list-item-text" layout="column">
+               <md-button class="md-secondary" ng-click="transportCtrl.TransportSrv.archive(transport)">Archive</md-button>
+            </div>
+            <md-divider></md-divider>
+         </md-list>
+      </div>
+   </md-list>
+</md-content>
