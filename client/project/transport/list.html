@@ -43,7 +43,7 @@
             <div>Date Unload: {{transport.dateUnload}}</div>
             <div>Weight (q): {{transport.weight}}</div>
             <div>Cost: {{transport.cost}}€</div>
-            <div><md-button ng-hide="{{transport.archived}}" class="md-raised md-secondary" ng-click="transportCtrl.TransportSrv.archive(transport)">Archive</md-button></div>
+            <div><md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="transportCtrl.TransportSrv.archive(transport)">Archive</md-button></div>
          </div>
          <md-divider></md-divider>
       </md-list-item>
