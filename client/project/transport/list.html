@@ -16,7 +16,7 @@
    </md-input-container>
 
    <md-input-container flex="25">
-      <label>Order</label>
+      <label>Order By</label>
       <md-select ng-model="selectedOrderByOptions" ng-init="selectedOrderByOptions = selectedOrderByOptions || 'dateLoad'">
          <md-option ng-repeat="option in transportCtrl.orderOptions" value="{{option.prop}}">
             {{option.title}}
@@ -43,7 +43,10 @@
             <div>Date Unload: {{transport.dateUnload}}</div>
             <div>Weight (q): {{transport.weight}}</div>
             <div>Cost: {{transport.cost}}€</div>
-            <div><md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="transportCtrl.TransportSrv.archive(transport)">Archive</md-button></div>
+            <div>
+               <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="transportCtrl.TransportSrv.archive(transport)">Archive</md-button>
+               <md-button class="md-raised md-accent" ng-click="transportCtrl.TransportSrv.edit(transport)">Archive</md-button>
+            </div>
          </div>
          <md-divider></md-divider>
       </md-list-item>

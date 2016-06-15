@@ -1,5 +1,6 @@
 // angular.module('tm', []);
 angular.module('tm', [
+   'ui.router',
    'ngMessages',
    'ngAria',
    'ngAnimate',
@@ -12,4 +13,27 @@ angular.module('tm', [
          .accentPalette('blue')
          .warnPalette('red')
          .backgroundPalette('grey');
+   })
+   .config(($stateProvider, $urlRouterProvider) => {
+      $stateProvider
+
+         .state('transports', {
+            abstract: true,
+            controller: 'TransportCtrl',
+            controllerAs: 'transportCtrl',
+            template: '<div ui-view></div>',
+            url: '',
+         })
+
+         .state('transports.list', {
+            templateUrl: 'project/transport/list.html',
+            url: '/',
+         })
+
+         .state('transports.add', {
+            templateUrl: 'project/transport/my-form.html',
+            url: '/add',
+         });
+
+      $urlRouterProvider.otherwise('/');
    });
