@@ -1,16 +1,15 @@
-module.exports = () => {
-  // business logics
-  const name = 'MyModule';
-  const version = '1.0.0';
-  
-  function sayHello(name) {
-    return 'Hello ' + name;
-  };
-  
-  // public API
-  return {
-    name: name,
-    sayHello: sayHello,
-    version: version,
-  };
+module.exports = function(options){
+   options = options || {};
+   var myName = options.robot || 'robot';
+   function sayHello(name){
+      console.log(myName + ' says hello to ' + name);
+   }
+
+   return {
+      name: myName,
+      version: '0.1.0',
+
+      //public API
+      sayHello: sayHello,
+   };
 };

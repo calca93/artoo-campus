@@ -1,9 +1,18 @@
 module.exports = () => {
-  function get(req, res) {
-    res.status(200).send([]);
+  function query(req, res) {
+    console.log(req.timeRequest)
+    res.status(200).send([{name: 'Ascia', description: 'blablabla'}]);
   }
-  
+
+
+  function save(req, res) {
+    var item = req.body;
+    console.log(item);
+    res.status(201).send({result: 'Item '+ item.name + ' created'});
+  }
+
   return {
-    get: get,
+    query: query,
+    save: save,
   };
 }
