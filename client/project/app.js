@@ -1,6 +1,7 @@
 // angular.module('tm', []);
 angular.module('tm', [
    'ui.router',
+   'ngResource',
    'ngMessages',
    'ngAria',
    'ngAnimate',

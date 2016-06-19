@@ -13,7 +13,7 @@ angular.module('tm').service('TransportSrv', function(){
          cost: 2000,
          archived: false,
       }, {
-         id: '02',
+         id: '03',
          customer: 'Company B',
          start: 'Company B',
          destination: 'Company Z',
@@ -25,7 +25,7 @@ angular.module('tm').service('TransportSrv', function(){
          cost: 300,
          archived: false,
       },{
-         id: '02',
+         id: '04',
          customer: 'Company H',
          start: 'Company B',
          destination: 'Company R',
@@ -37,7 +37,7 @@ angular.module('tm').service('TransportSrv', function(){
          cost: 800,
          archived: false,
       },{
-         id: '02',
+         id: '05',
          customer: 'Company Q',
          start: 'Company J',
          destination: 'Company Z',
@@ -49,7 +49,7 @@ angular.module('tm').service('TransportSrv', function(){
          cost: 700,
          archived: false,
       },{
-         id: '02',
+         id: '06',
          customer: 'Company X',
          start: 'Company D',
          destination: 'Company O',

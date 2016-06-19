@@ -23,7 +23,13 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv){
          title: 'Cost',
       },];
 
-   this.minDate = new Date(2016, 5, 17);
+   var myDate = new Date();
+   this.minDate = new Date(
+      myDate.getFullYear(),
+      myDate.getMonth(),
+      myDate.getDate());
+   console.info(this.minDate);
+
    this.filterPredicate = function(date) {
       var day = date.getDay();
       return day !== 0 && day !== 6;

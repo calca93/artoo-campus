@@ -1,74 +1,108 @@
 
 <form name="form" autocomplete="off" novalidate layout-margin layout-padding>
+
    <div layout="column" layout-align="center stretch" >
-      <h2 ng-module="formTitle">Insert/Delete Form</h2>
+      <h2 ng-module="formTitle">Insert/Modify Form</h2>
    </div>
 
    <!--//------------------------ COMMITTANT NAME ------------------------------------>
    <div layout="column" layout-align="center stretch" >
       <md-input-container class="md-block" flex='60'>
          <label>Company committant name</label>
-         <input name="customer.name" ng-model="customer.name" md-maxlength="15" required>
+         <input name="customer.name" ng-model="customer.name" md-maxlength="20" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company committant name.</div>
-         <div ng-message="md-maxlength" class="my-message">Name must contain 15 characters max.</div>
+         <div ng-message="md-maxlength" class="my-message">Name must contain 20 characters max.</div>
          </div>
       </md-input-container>
    </div>
    <!--//------------------------ START AND DESTINATION NAMES ------------------------------------>
-   <div layout-gt-sm="row" layout="column" layout-align="space-around stretch">
+   <div layout-gt-sm="row" layout="column" layout-align="space-around">
       <md-input-container class="md-block" flex='60'>
          <label>Start company</label>
-         <input name="start.name" ng-model="start.name" md-maxlength="15" required>
+         <input name="start.name" ng-model="start.name"  required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company name.</div>
-         <div ng-message="md-maxlength" class="my-message">Name must contain 15 characters max.</div>
          </div>
       </md-input-container>
 
       <md-input-container class="md-block" flex='60'>
          <label>Destination company</label>
-         <input name="destination.name" ng-model="destination.name" md-maxlength="15" required>
+         <input name="destination.name" ng-model="destination.name" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company name.</div>
-         <div ng-message="md-maxlength" class="my-message">Name must contain 15 characters max.</div>
          </div>
       </md-input-container>
    </div>
 
    <!--//------------------------ COMPLETE ADDRESSES ------------------------------------>
-   <div layout-gt-sm="row" layout="column" layout-align="space-around stretch">
+   <div layout-gt-sm="row" layout="column" layout-align="space-around">
       <md-input-container class="md-block" flex='60'>
          <label>Complete start address</label>
-         <input name="start.address" ng-model="start.address" md-maxlength="20" required>
+         <input name="start.address" ng-model="start.address" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company address.</div>
-         <div ng-message="md-maxlength" class="my-message">Name must contain 15 characters max.</div>
          </div>
       </md-input-container>
 
       <md-input-container class="md-block" flex='60'>
          <label>Complete destination address</label>
-         <input name="destination.address" ng-model="destination.address" md-maxlength="20" required>
+         <input name="destination.address" ng-model="destination.address" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company address.</div>
-         <div ng-message="md-maxlength" class="my-message">Name must contain 15 characters max.</div>
          </div>
       </md-input-container>
    </div>
 
    <!--// --------------------------- DATES ---------------------------------------->
-   <div layout-gt-sm="row" layout="column" layout-align="space-around stretch">
-      <md-datepicker ng-model="myDate"
-                     md-placeholder="Enter date"
+   <div layout-gt-sm="row" layout="column" layout-align="space-around">
+      <md-datepicker ng-model="startDate"
+                     md-placeholder="Enter start date"
                      md-min-date="minDate"
-                     md-date-filter="filterPredicate">
+                     md-date-filter="filterPredicate"
+                     md-open-on-focus>
       </md-datepicker>
-      <md-datepicker ng-model="myDate"
-                     md-placeholder="Enter date"
-                     md-min-date="myDate"
-                     md-date-filter="filterPredicate">
+      <md-datepicker ng-model="finishDate"
+                     md-placeholder="Enter dest date"
+                     md-min-date="startDate"
+                     md-date-filter="filterPredicate"
+                     md-open-on-focus>
       </md-datepicker>
    </div>
 
+   <div layout-gt-sm="row" layout="column" layout-align="start start">
+
+      <md-input-container class="md-block" flex='30'>
+         <label>Weight q</label>
+         <input name="weight" ng-model="weight"  required>
+         <div ng-messages="form.name.$error" role="alert" multiple>
+         <div ng-message="required" class="my-message">You must insert weight.</div>
+         </div>
+      </md-input-container>
+
+      <md-input-container class="md-block" flex='30'>
+         <label>Price €</label>
+         <input name="price" ng-model="price"  required>
+         <div ng-messages="form.name.$error" role="alert" multiple>
+         <div ng-message="required" class="my-message">You must insert price.</div>
+         </div>
+      </md-input-container>
+
+   </div>
+
+   <div layout="row" layout-align="space-between center">
+      <div>
+         <md-button class="md-raised md-primary" ng-disabled="form.$invalid">
+            Save
+         </md-button>
+         <md-button ng-click="resetForm(form)" class="md-primary">
+            Reset
+         </md-button>
+      </div>
+      <div>
+         <md-button ng-click="resetForm(form)" ui-sref="transports.list" class="md-primary">
+            Back
+         </md-button>
+      </div>
+   </div>
 </form>

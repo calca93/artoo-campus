@@ -1,34 +1,43 @@
-
 <md-toolbar layout="row" class="md-hue-3">
    <div class="md-toolbar-tools">
-      <strong>List of Transports</strong>
+      <h2>List of Transports</h2>
    </div>
 </md-toolbar>
 
 <md-content layout-margin layout-padding>
-   <md-input-container flex="25">
-      <label>Show</label>
-      <md-select ng-model="selectedShowOptions" ng-init="selectedShowOptions = selectedShowOptions || 'progress'">
-         <md-option ng-repeat="option in transportCtrl.showOptions" value="{{option.prop}}">
-            {{option.title}}
-         </md-option>
-      </md-select>
-   </md-input-container>
 
-   <md-input-container flex="25">
-      <label>Order By</label>
-      <md-select ng-model="selectedOrderByOptions" ng-init="selectedOrderByOptions = selectedOrderByOptions || 'dateLoad'">
-         <md-option ng-repeat="option in transportCtrl.orderOptions" value="{{option.prop}}">
-            {{option.title}}
-         </md-option>
-      </md-select>
-   </md-input-container>
+   <div layout="row" layout-align="space-between center">
+      <div>
+         <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ui-sref="transports.add">
+            New
+         </md-button>
+      </div>
+      <div>
+         <md-input-container>
+            <label>Show</label>
+            <md-select ng-model="selectedShowOptions" ng-init="selectedShowOptions = selectedShowOptions || 'progress'">
+               <md-option ng-repeat="option in transportCtrl.showOptions" value="{{option.prop}}">
+                  {{option.title}}
+               </md-option>
+            </md-select>
+         </md-input-container>
 
-   <md-input-container flex="10">
-      <md-checkbox ng-model="selectedReverse" aria-label="Checkbox 1">
-         Reverse
-      </md-checkbox>
-   </md-input-container>
+         <md-input-container >
+            <label>Order By</label>
+            <md-select ng-model="selectedOrderByOptions" ng-init="selectedOrderByOptions = selectedOrderByOptions || 'dateLoad'">
+               <md-option ng-repeat="option in transportCtrl.orderOptions" value="{{option.prop}}">
+                  {{option.title}}
+               </md-option>
+            </md-select>
+         </md-input-container>
+
+         <md-input-container>
+            <md-checkbox ng-model="selectedReverse" aria-label="Checkbox 1">
+               Reverse
+            </md-checkbox>
+         </md-input-container>
+      </div>
+   </div>
 
 
    <md-list flex>
@@ -44,8 +53,12 @@
             <div>Weight (q): {{transport.weight}}</div>
             <div>Cost: {{transport.cost}}€</div>
             <div>
-               <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="transportCtrl.TransportSrv.archive(transport)">Archive</md-button>
-               <md-button class="md-raised md-accent" ng-click="transportCtrl.TransportSrv.edit(transport)">Edit</md-button>
+               <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="transportCtrl.TransportSrv.archive(transport)">
+                  Archive
+               </md-button>
+               <md-button class="md-primary" ng-click="transportCtrl.TransportSrv.edit(transport)">
+                  Edit
+               </md-button>
             </div>
          </div>
          <md-divider></md-divider>
