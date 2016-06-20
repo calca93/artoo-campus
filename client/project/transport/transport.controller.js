@@ -34,4 +34,9 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv){
       var day = date.getDay();
       return day !== 0 && day !== 6;
    };
+
+   this.transportSelected = (transport) => {
+      this.temp.customer = transport.customer;
+      console.info(transport);
+   };
 });
