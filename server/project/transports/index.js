@@ -1,10 +1,12 @@
 const express = require('express');
-const controller = require('./transports.controller.js')();
 const router = express.Router();
+const controller = require('./transports.controller.js')();
 
 router.get('/', controller.query);
-router.post('/add', controller.save);
-router.put('/archive/:id', controller.archive);
+router.get('/reset', controller.reset);
+router.post('/', controller.save);
+router.put('/status/:id', controller.archive);
+router.put('/:id', controller.update);
 
 module.exports = {
   name: 'Transport',

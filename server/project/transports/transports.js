@@ -1,18 +1,15 @@
 module.exports = [
    {
-      id: '01',
       customer: 'Company A',
       start: 'Company B',
       destination: 'Company Z',
       placeLoad: 'Recanati, via ugo foscolo 4',
       placeUnload: 'Ancona, piazza del popolo',
-      dateLoad: '23/05/2016',
-      dateUnload: '25/05/2016',
+      dateLoad: '2016/05/23',
+      dateUnload: '2016/05/25',
       weight: 30,
       cost: 2000,
-      archived: false,
    }, {
-      id: '03',
       customer: 'Company B',
       start: 'Company B',
       destination: 'Company Z',
@@ -22,9 +19,7 @@ module.exports = [
       dateUnload: '04/02/2016',
       weight: 510,
       cost: 300,
-      archived: false,
    },{
-      id: '04',
       customer: 'Company H',
       start: 'Company B',
       destination: 'Company R',
@@ -34,9 +29,7 @@ module.exports = [
       dateUnload: '04/02/2016',
       weight: 150,
       cost: 800,
-      archived: false,
    },{
-      id: '05',
       customer: 'Company Q',
       start: 'Company J',
       destination: 'Company Z',
@@ -46,9 +39,7 @@ module.exports = [
       dateUnload: '04/02/2016',
       weight: 250,
       cost: 700,
-      archived: false,
    },{
-      id: '06',
       customer: 'Company X',
       start: 'Company D',
       destination: 'Company O',
@@ -58,6 +49,5 @@ module.exports = [
       dateUnload: '04/02/2016',
       weight: 10,
       cost: 5000,
-      archived: false,
    }
 ];

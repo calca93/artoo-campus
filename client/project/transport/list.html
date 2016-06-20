@@ -16,7 +16,7 @@
          <md-input-container>
             <label>Show</label>
             <md-select ng-model="selectedShowOptions" ng-init="selectedShowOptions = selectedShowOptions || 'progress'">
-               <md-option ng-repeat="option in transportCtrl.showOptions" value="{{option.prop}}">
+               <md-option ng-repeat="option in TransportCtrl.showOptions" value="{{option.prop}}">
                   {{option.title}}
                </md-option>
             </md-select>
@@ -25,7 +25,7 @@
          <md-input-container >
             <label>Order By</label>
             <md-select ng-model="selectedOrderByOptions" ng-init="selectedOrderByOptions = selectedOrderByOptions || 'dateLoad'">
-               <md-option ng-repeat="option in transportCtrl.orderOptions" value="{{option.prop}}">
+               <md-option ng-repeat="option in TransportCtrl.orderOptions" value="{{option.prop}}">
                   {{option.title}}
                </md-option>
             </md-select>
@@ -41,25 +41,23 @@
 
 
    <md-list flex>
-      <md-list-item ng-repeat="transport in transportCtrl.TransportSrv.get() | typeShow:selectedShowOptions | orderBy:selectedOrderByOptions:selectedReverse" ng-click="null">
+      <md-list-item ng-repeat="transport in TransportCtrl.transports | typeShow:selectedShowOptions | orderBy:selectedOrderByOptions:selectedReverse">
          <div layout="column" layout="space-around start">
             <div><h3>{{transport.customer}}</h3></div>
-            <div>From: <strong>{{transport.start}}</strong></div>
-            <div>To: <strong>{{transport.destination}}</strong></div>
-            <div>Load address: {{transport.placeLoad}}</div>
-            <div>Unload address: {{transport.placeUnload}}</div>
+            <div>From: <strong>{{transport.start}}</strong>, {{transport.placeLoad}}</div>
             <div>Date Load: {{transport.dateLoad}}</div>
+            <div>To: <strong>{{transport.destination}}</strong>, {{transport.placeUnload}}</div>
             <div>Date Unload: {{transport.dateUnload}}</div>
             <div>Weight (q): {{transport.weight}}</div>
             <div>Cost: {{transport.cost}}€</div>
-            <div>
-               <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="transportCtrl.TransportSrv.archive(transport)">
-                  Archive
-               </md-button>
-               <md-button class="md-primary" ng-click="transportSelected(transport)" ui-sref="transports.add">
+
+               <md-button class="md-primary" ng-disabled="true" ui-sref="transports.add">
                   Edit
                </md-button>
-            </div>
+               <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="TransportCtrl.setStatus(transport)">
+                  Archive
+               </md-button>
+
          </div>
          <md-divider></md-divider>
       </md-list-item>

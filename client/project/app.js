@@ -21,7 +21,7 @@ angular.module('tm', [
          .state('transports', {
             abstract: true,
             controller: 'TransportCtrl',
-            controllerAs: 'transportCtrl',
+            controllerAs: 'TransportCtrl',
             template: '<div ui-view></div>',
             url: '',
          })

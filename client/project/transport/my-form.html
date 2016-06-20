@@ -1,5 +1,5 @@
 
-<form name="form"  ng-submit="update(item, form)" autocomplete="off" novalidate layout-margin layout-padding>
+<form name="form"  ng-submit="TransportCtrl.add(TransportCtrl.transport)" autocomplete="off" novalidate layout-margin layout-padding>
 
    <div layout="column" layout-align="center stretch" >
       <h2 ng-module="formTitle">Insert/Modify Form</h2>
@@ -9,7 +9,7 @@
    <div layout="column" layout-align="center stretch" >
       <md-input-container class="md-block" flex='60'>
          <label>Company committant name</label>
-         <input name="customer.name" ng-model="temp.customer" md-maxlength="20" required>
+         <input name="customer.name" ng-model="TransportCtrl.transport.customer" md-maxlength="20" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company committant name.</div>
          <div ng-message="md-maxlength" class="my-message">Name must contain 20 characters max.</div>
@@ -20,7 +20,7 @@
    <div layout-gt-sm="row" layout="column" layout-align="space-around">
       <md-input-container class="md-block" flex='60'>
          <label>Start company</label>
-         <input name="start.name" ng-model="temp.start"  required>
+         <input name="start.name" ng-model="TransportCtrl.transport.start"  required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company name.</div>
          </div>
@@ -28,7 +28,7 @@
 
       <md-input-container class="md-block" flex='60'>
          <label>Destination company</label>
-         <input name="destination.name" ng-model="temp.destination" required>
+         <input name="destination.name" ng-model="TransportCtrl.transport.destination" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company name.</div>
          </div>
@@ -39,7 +39,7 @@
    <div layout-gt-sm="row" layout="column" layout-align="space-around">
       <md-input-container class="md-block" flex='60'>
          <label>Complete start address</label>
-         <input name="start.address" ng-model="temp.startAddr" required>
+         <input name="start.address" ng-model="TransportCtrl.transport.placeLoad" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company address.</div>
          </div>
@@ -47,7 +47,7 @@
 
       <md-input-container class="md-block" flex='60'>
          <label>Complete destination address</label>
-         <input name="destination.address" ng-model="temp.destAddr" required>
+         <input name="destination.address" ng-model="TransportCtrl.transport.placeUnload" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company address.</div>
          </div>
@@ -56,13 +56,13 @@
 
    <!--// --------------------------- DATES ---------------------------------------->
    <div layout-gt-sm="row" layout="column" layout-align="space-around">
-      <md-datepicker ng-model="temp.startDate"
+      <md-datepicker ng-model="TransportCtrl.transport.dateLoad"
                      md-placeholder="Enter start date"
                      md-min-date="minDate"
                      md-date-filter="filterPredicate"
                      md-open-on-focus>
       </md-datepicker>
-      <md-datepicker ng-model="temp.finishDate"
+      <md-datepicker ng-model="TransportCtrl.transport.dateUnload"
                      md-placeholder="Enter dest date"
                      md-min-date="startDate"
                      md-date-filter="filterPredicate"
@@ -74,7 +74,7 @@
 
       <md-input-container class="md-block" flex='30'>
          <label>Weight q</label>
-         <input name="weight" ng-model="temp.weight"  required>
+         <input name="weight" ng-model="TransportCtrl.transport.weight"  required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert weight.</div>
          </div>
@@ -82,7 +82,7 @@
 
       <md-input-container class="md-block" flex='30'>
          <label>Price €</label>
-         <input name="price" ng-model="temp.price"  required>
+         <input name="price" ng-model="TransportCtrl.transport.cost"  required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert price.</div>
          </div>
@@ -92,7 +92,7 @@
 
    <div layout="row" layout-align="space-between center">
       <div>
-         <md-button class="md-raised md-primary" ng-disabled="form.$invalid">
+         <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid">
             Save
          </md-button>
          <md-button ng-click="resetForm(form)" class="md-primary">
