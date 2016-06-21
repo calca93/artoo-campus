@@ -1,15 +1,18 @@
 <md-toolbar layout="row" class="md-hue-3">
    <div class="md-toolbar-tools">
-      <h2>List of Transports</h2>
+      <h1>List of Transports</h1>
    </div>
 </md-toolbar>
 
 <md-content layout-margin layout-padding>
 
    <div layout-xs="column" layout="row" layout-align="space-between center">
-      <div>
+      <div layout-xs="column" layout="row" layout-align="start center">
          <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ui-sref="transports.add">
             New
+         </md-button>
+         <md-button class=" md-accent" ng-click="TransportCtrl.reset()">
+            <label><i class="material-icons">settings_backup_restore</i> Reset</label>
          </md-button>
       </div>
       <div flex-xs="100" flex="40">
@@ -43,7 +46,13 @@
       </div>
    </div>
 
+
+
    <md-list flex>
+
+      <div layout="row" layout-align="start center">
+         <md-progress-circular md-mode="indeterminate" ng-show="TransportCtrl.loading"></md-progress-circular>
+      </div>
       <md-list-item class="noright" ng-repeat="transport in TransportCtrl.transports | typeShow:selectedShowOptions | filter:search | orderBy:selectedOrderByOptions:selectedReverse" ng-click="null">
          <div layout-gt-xs="column" layout-align="space-between start">
             <div>

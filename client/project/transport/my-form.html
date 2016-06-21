@@ -2,7 +2,7 @@
 <form name="form"  ng-submit="TransportCtrl.add(TransportCtrl.transport)" autocomplete="off" novalidate layout-margin >
 
    <div layout="column" layout-align="center stretch" >
-      <h2 ng-module="formTitle">Insert/Modify Form</h2>
+      <h2 ng-model="TransportCtrl.formTitle">Insert/Modify Form</h2>
    </div>
 
    <!--//------------------------ COMMITTANT NAME ------------------------------------>
@@ -107,12 +107,13 @@
          <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid">
             Save
          </md-button>
-         <md-button ng-click="resetForm(form)" class="md-primary">
+         <md-button ng-click="TransportCtrl.resetForm(form)" class="md-primary">
             Reset
          </md-button>
+         <md-progress-circular md-mode="indeterminate" ng-show="TransportCtrl.loading"></md-progress-circular>
       </div>
       <div>
-         <md-button ng-click="resetForm(form)" ui-sref="transports.list" class="md-primary">
+         <md-button ng-click="TransportCtrl.resetForm(form)" ui-sref="transports.list" class="md-primary">
             Back
          </md-button>
       </div>
