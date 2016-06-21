@@ -1,5 +1,5 @@
 
-<form name="form"  ng-submit="TransportCtrl.add(TransportCtrl.transport)" autocomplete="off" novalidate layout-margin layout-padding>
+<form name="form"  ng-submit="TransportCtrl.add(TransportCtrl.transport)" autocomplete="off" novalidate layout-margin >
 
    <div layout="column" layout-align="center stretch" >
       <h2 ng-module="formTitle">Insert/Modify Form</h2>
@@ -8,7 +8,8 @@
    <!--//------------------------ COMMITTANT NAME ------------------------------------>
    <div layout="column" layout-align="center stretch" >
       <md-input-container class="md-block" flex='60'>
-         <label>Company committant name</label>
+         <label><i class="material-icons">domain</i> Company committant name</label>
+         <!--<label>Company committant name</label>-->
          <input name="customer.name" ng-model="TransportCtrl.transport.customer" md-maxlength="20" required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert company committant name.</div>
@@ -17,63 +18,74 @@
       </md-input-container>
    </div>
    <!--//------------------------ START AND DESTINATION NAMES ------------------------------------>
-   <div layout-gt-sm="row" layout="column" layout-align="space-around">
-      <md-input-container class="md-block" flex='60'>
-         <label>Start company</label>
-         <input name="start.name" ng-model="TransportCtrl.transport.start"  required>
-         <div ng-messages="form.name.$error" role="alert" multiple>
-         <div ng-message="required" class="my-message">You must insert company name.</div>
-         </div>
-      </md-input-container>
+   <div layout-gt-xs="row" layout="column" layout-align="space-around" >
 
-      <md-input-container class="md-block" flex='60'>
-         <label>Destination company</label>
-         <input name="destination.name" ng-model="TransportCtrl.transport.destination" required>
-         <div ng-messages="form.name.$error" role="alert" multiple>
-         <div ng-message="required" class="my-message">You must insert company name.</div>
+      <div layout="column" layout-align="space-around" flex='100'>
+         <md-input-container class="md-block">
+            <label><i class="material-icons">flight_takeoff</i> Start Company</label>
+            <input name="start.name" ng-model="TransportCtrl.transport.start" required>
+            <div ng-messages="form.name.$error" role="alert" multiple>
+               <div ng-message="required" class="my-message">You must insert company name.</div>
+            </div>
+         </md-input-container>
+
+         <md-input-container class="md-block" >
+            <label><i class="material-icons">place</i> Complete start address</label>
+            <input name="start.address" ng-model="TransportCtrl.transport.placeLoad" required>
+            <div ng-messages="form.name.$error" role="alert" multiple>
+               <div ng-message="required" class="my-message">You must insert company address.</div>
+            </div>
+         </md-input-container>
+
+         <div layout="column" layout-align="space-around center">
+            <md-datepicker ng-model="TransportCtrl.transport.dateLoad"
+                        md-placeholder="Enter start date"
+                        md-min-date="minDate"
+                        md-date-filter="filterPredicate"
+                        md-open-on-focus>
+            </md-datepicker>
+            <md-input-container>
+               <label><i class="material-icons">access_time</i> Load</label>
+               <input type="time">
+            </md-input-container>
          </div>
-      </md-input-container>
+
+      </div>
+      <div layout="column" layout-align="space-around" flex='100'>
+         <md-input-container class="md-block" >
+            <label><i class="material-icons">flight_land</i> Destination Company</label>
+            <input name="destination.name" ng-model="TransportCtrl.transport.destination" required>
+            <div ng-messages="form.name.$error" role="alert" multiple>
+               <div ng-message="required" class="my-message">You must insert company name.</div>
+            </div>
+         </md-input-container>
+         <md-input-container class="md-block" >
+            <label><i class="material-icons">place</i> Complete destination address</label>
+            <input name="destination.address" ng-model="TransportCtrl.transport.placeUnload" required>
+            <div ng-messages="form.name.$error" role="alert" multiple>
+               <div ng-message="required" class="my-message">You must insert company address.</div>
+            </div>
+         </md-input-container>
+
+         <div layout="column" layout-align="space-around center">
+            <md-datepicker ng-model="TransportCtrl.transport.dateUnload"
+                           md-placeholder="Enter dest date"
+                           md-min-date="TransportCtrl.transport.dateLoad"
+                           md-date-filter="filterPredicate"
+                           md-open-on-focus>
+            </md-datepicker>
+            <md-input-container flex='30'>
+               <label><i class="material-icons">access_time</i> Unload</label>
+               <input type="time">
+            </md-input-container>
+         </div>
+
+      </div>
    </div>
-
-   <!--//------------------------ COMPLETE ADDRESSES ------------------------------------>
-   <div layout-gt-sm="row" layout="column" layout-align="space-around">
-      <md-input-container class="md-block" flex='60'>
-         <label>Complete start address</label>
-         <input name="start.address" ng-model="TransportCtrl.transport.placeLoad" required>
-         <div ng-messages="form.name.$error" role="alert" multiple>
-         <div ng-message="required" class="my-message">You must insert company address.</div>
-         </div>
-      </md-input-container>
-
-      <md-input-container class="md-block" flex='60'>
-         <label>Complete destination address</label>
-         <input name="destination.address" ng-model="TransportCtrl.transport.placeUnload" required>
-         <div ng-messages="form.name.$error" role="alert" multiple>
-         <div ng-message="required" class="my-message">You must insert company address.</div>
-         </div>
-      </md-input-container>
-   </div>
-
-   <!--// --------------------------- DATES ---------------------------------------->
-   <div layout-gt-sm="row" layout="column" layout-align="space-around">
-      <md-datepicker ng-model="TransportCtrl.transport.dateLoad"
-                     md-placeholder="Enter start date"
-                     md-min-date="minDate"
-                     md-date-filter="filterPredicate"
-                     md-open-on-focus>
-      </md-datepicker>
-      <md-datepicker ng-model="TransportCtrl.transport.dateUnload"
-                     md-placeholder="Enter dest date"
-                     md-min-date="startDate"
-                     md-date-filter="filterPredicate"
-                     md-open-on-focus>
-      </md-datepicker>
-   </div>
-
-   <div layout-gt-sm="row" layout="column" layout-align="start start">
-
+   <md-divider></md-divider>
+   <div layout-gt-sm="row" layout="row" layout-align="center start">
       <md-input-container class="md-block" flex='30'>
-         <label>Weight q</label>
+         <label><i class="material-icons">fitness_center</i> Weigth</label>
          <input name="weight" ng-model="TransportCtrl.transport.weight"  required>
          <div ng-messages="form.name.$error" role="alert" multiple>
          <div ng-message="required" class="my-message">You must insert weight.</div>
@@ -81,10 +93,10 @@
       </md-input-container>
 
       <md-input-container class="md-block" flex='30'>
-         <label>Price €</label>
-         <input name="price" ng-model="TransportCtrl.transport.cost"  required>
+         <label><i class="material-icons">euro_symbol</i> Cost</label>
+         <input name="cost" ng-model="TransportCtrl.transport.cost"  required>
          <div ng-messages="form.name.$error" role="alert" multiple>
-         <div ng-message="required" class="my-message">You must insert price.</div>
+         <div ng-message="required" class="my-message">You must insert cost.</div>
          </div>
       </md-input-container>
 

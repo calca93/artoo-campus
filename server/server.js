@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const development = (process.env.NODE_ENV === 'production') ? false : true;
 const settings = require('./settings');
+const expressValidator = require('express-validator');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -29,6 +30,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // setup the body parser to accept json and populate req.body
 app.use(bodyParser.json());
+
+// express validator (generare piu bad request possibili)
+app.use(expressValidator());
 
 // use HTTP verbs such as PUT or DELETE where the client doesn't support others
 app.use(methodOverride());
@@ -58,7 +62,7 @@ app.use('/', express.static(path.join(__dirname, '..', 'client')));
 // define here your API
 //Esercizio
 //app.use('/api/items', require('./exercises/middlewares/mean') ,require('./exercises/items').router);
-app.use('/api/users', require('./exercises/users').router);
+//app.use('/api/users', require('./exercises/users').router);
 app.use('/api/transports', require('./project/transports').router);
 
 // handle not-found resources

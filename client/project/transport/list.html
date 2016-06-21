@@ -6,14 +6,18 @@
 
 <md-content layout-margin layout-padding>
 
-   <div layout="row" layout-align="space-between center">
+   <div layout-xs="column" layout="row" layout-align="space-between center">
       <div>
          <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ui-sref="transports.add">
             New
          </md-button>
       </div>
-      <div>
-         <md-input-container>
+      <div flex-xs="100" flex="40">
+         <md-input-container class="md-block" flex='80'>
+            <label>Search</label>
+            <input name="start.name" ng-model="search">
+         </md-input-container>
+         <md-input-container flex='70'>
             <label>Show</label>
             <md-select ng-model="selectedShowOptions" ng-init="selectedShowOptions = selectedShowOptions || 'progress'">
                <md-option ng-repeat="option in TransportCtrl.showOptions" value="{{option.prop}}">
@@ -22,7 +26,7 @@
             </md-select>
          </md-input-container>
 
-         <md-input-container >
+         <md-input-container flex='40'>
             <label>Order By</label>
             <md-select ng-model="selectedOrderByOptions" ng-init="selectedOrderByOptions = selectedOrderByOptions || 'dateLoad'">
                <md-option ng-repeat="option in TransportCtrl.orderOptions" value="{{option.prop}}">
@@ -31,7 +35,7 @@
             </md-select>
          </md-input-container>
 
-         <md-input-container>
+         <md-input-container flex='20'>
             <md-checkbox ng-model="selectedReverse" aria-label="Checkbox 1">
                Reverse
             </md-checkbox>
@@ -39,25 +43,23 @@
       </div>
    </div>
 
-
    <md-list flex>
-      <md-list-item ng-repeat="transport in TransportCtrl.transports | typeShow:selectedShowOptions | orderBy:selectedOrderByOptions:selectedReverse">
-         <div layout="column" layout="space-around start">
-            <div><h3>{{transport.customer}}</h3></div>
-            <div>From: <strong>{{transport.start}}</strong>, {{transport.placeLoad}}</div>
-            <div>Date Load: {{transport.dateLoad}}</div>
-            <div>To: <strong>{{transport.destination}}</strong>, {{transport.placeUnload}}</div>
-            <div>Date Unload: {{transport.dateUnload}}</div>
-            <div>Weight (q): {{transport.weight}}</div>
-            <div>Cost: {{transport.cost}}€</div>
-
-               <md-button class="md-primary" ng-disabled="true" ui-sref="transports.add">
-                  Edit
-               </md-button>
+      <md-list-item class="noright" ng-repeat="transport in TransportCtrl.transports | typeShow:selectedShowOptions | filter:search | orderBy:selectedOrderByOptions:selectedReverse" ng-click="null">
+         <div layout-gt-xs="column" layout-align="space-between start">
+            <div>
+               <h3>{{transport.customer}} - {{transport.cost}}€</h3>
+               <p>From: <strong>{{transport.start}}</strong>, {{transport.placeLoad}} - <strong>{{transport.dateLoad | date : medium}}</strong></p>
+               <p>To: <strong>{{transport.destination}}</strong>, {{transport.placeUnload}} - <strong>{{transport.dateUnload | date : medium}}</strong></p>
+               <p>{{transport.weight}} quintals</p>
+            </div>
+            <div layout="row" layout-align="space-between start">
                <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="TransportCtrl.setStatus(transport)">
                   Archive
                </md-button>
-
+               <md-button class="md-primary" ng-disabled="true" ui-sref="transports.add">
+                  Edit
+               </md-button>
+            </div>
          </div>
          <md-divider></md-divider>
       </md-list-item>

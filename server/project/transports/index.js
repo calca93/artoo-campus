@@ -5,8 +5,8 @@ const controller = require('./transports.controller.js')();
 router.get('/', controller.query);
 router.get('/reset', controller.reset);
 router.post('/', controller.save);
-router.put('/status/:id', controller.archive);
-router.put('/:id', controller.update);
+router.post('/:id', controller.update);
+router.put('/archive/:id', controller.archive);
 
 module.exports = {
   name: 'Transport',

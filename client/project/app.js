@@ -33,7 +33,7 @@ angular.module('tm', [
 
          .state('transports.add', {
             templateUrl: 'project/transport/my-form.html',
-            url: '/add',
+            url: '/add/:id',
          });
 
       $urlRouterProvider.otherwise('/');

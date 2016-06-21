@@ -5,8 +5,8 @@ module.exports = [
       destination: 'Company Z',
       placeLoad: 'Recanati, via ugo foscolo 4',
       placeUnload: 'Ancona, piazza del popolo',
-      dateLoad: '2016/05/23',
-      dateUnload: '2016/05/25',
+      dateLoad: '2016-05-23',
+      dateUnload: '2016-05-25',
       weight: 30,
       cost: 2000,
    }, {

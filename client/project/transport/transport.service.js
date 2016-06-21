@@ -6,7 +6,7 @@ angular.module('tm').service('TransportSrv', function($resource){
       setStatus: {
          method: 'PUT',
          params: {
-           action: 'status',
+           action: 'archive',
          },
       },
       update: {

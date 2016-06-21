@@ -1,6 +1,7 @@
 angular.module('tm').controller('TransportCtrl', function(TransportSrv){
    this.TransportSrv = TransportSrv;
    this.transport = TransportSrv.create();
+   var master;
 
    this.showOptions = [{
          prop: 'all',
@@ -16,6 +17,9 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv){
    this.orderOptions = [ {
          prop: 'dateLoad',
          title: 'Date',
+      }, {
+         prop: 'customer',
+         title: 'Company name',
       },{
          prop: 'weight',
          title: 'Weight',
@@ -36,10 +40,11 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv){
       return day !== 0 && day !== 6;
    };
 
-   // this.transportSelected = (transport) => {
-   //    this.transport.customer = transport.customer;
-   //    console.info(transport);
-   // };
+   this.resetForm = (form) => {
+      this.transport = angular.copy(master);
+      console.log(this.transport);
+      form.$setPristine();
+   };
 
 
    this.query = () => {
@@ -51,7 +56,10 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv){
 
 
    this.add = (transport) => {
-      transport.$save();
+      transport.$save()
+         .then()
+         .catch()
+         .finally();
    };
 
    this.setStatus = (transport) => {

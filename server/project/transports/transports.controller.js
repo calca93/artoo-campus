@@ -4,7 +4,11 @@ module.exports = () => {
    var resetList = require('./transports');
 
    function archive(req, res){
-      console.log(req.params.id);
+
+      req.checkParams('id').isMongoId();
+
+      if(req.validationErrors()) return res.status(400).send('Invalid input');
+
       Transport.findByIdAndUpdate(req.params.id, {archived: true})
          .then((data) => res.status(200).send(data))
          .catch(err => res.status(500).send('Something went wrong during archiviation ['+ err +']'));
@@ -18,6 +22,19 @@ module.exports = () => {
    }
 
    function save(req, res){
+
+      req.checkBody('customer').isLength({min: 1});
+      req.checkBody('start').isLength({min: 1});
+      req.checkBody('destination').isLength({min: 1});
+      req.checkBody('placeLoad').isLength({min: 1});
+      req.checkBody('placeUnload').isLength({min: 1});
+      req.checkBody('dateLoad').isDate();
+      req.checkBody('dateUnload').isDate();
+      req.checkBody('weight').isNumeric();
+      req.checkBody('cost').isNumeric();
+
+      if(req.validationErrors()) return res.status(400).send('Invalid values'+ req.validationErrors());
+
       Transport.create(req.body)
          .then(() => res.status(201).send('Transport created successfully'))
          .catch(err => res.status(500).send('Cannot save the transport ['+ err +']'));
