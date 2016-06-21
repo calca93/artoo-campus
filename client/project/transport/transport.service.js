@@ -16,20 +16,26 @@ angular.module('tm').service('TransportSrv', function($resource){
            action: 'archive',
          },
       },
-      update: {
-         method: 'PUT',
-      },
    });
-
-   this.query = () => {
-      return Transports.query().$promise;
-   };
 
    this.create = () => {
       return new Transports();
    };
 
+   this.getById = (id) => {
+      return Transports.get({id: id}).$promise;
+   };
+
+   this.query = () => {
+      return Transports.query().$promise;
+   };
+
    this.reset = () => {
       return Transports.reset().$promise;
    };
+
+   this.update = () => {
+      return Transports.update().$promise;
+   };
+
 });

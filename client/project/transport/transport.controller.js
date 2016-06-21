@@ -1,4 +1,4 @@
-angular.module('tm').controller('TransportCtrl', function(TransportSrv){
+angular.module('tm').controller('TransportCtrl', function(TransportSrv, $stateParams, $state){
    this.TransportSrv = TransportSrv;
    this.transport = TransportSrv.create();
    var master = {};
@@ -33,7 +33,6 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv){
       myDate.getFullYear(),
       myDate.getMonth(),
       myDate.getDate());
-   console.info(this.minDate);
 
    this.filterPredicate = function(date) {
       var day = date.getDay();
@@ -43,12 +42,30 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv){
    this.resetForm = (form) => {
       this.loading = true;
       this.transport = angular.copy(master);
-      console.log(form.$pristine);
       form.$setPristine();
       form.$setUntouched();
       this.loading = false;
    };
 
+   if($stateParams.id){
+      this.loading = true;
+      this.isAnEdit = true;
+      TransportSrv.getById($stateParams.id)
+         .then((data) => {
+            data.dateLoad = new Date(data.dateLoad);
+            data.dateUnload = new Date(data.dateUnload);
+            this.transport = data;
+         })
+         .catch((err) => console.error(err))
+         .finally(() => this.loading = false);
+   }
+   else {
+      this.isAnEdit = false;
+      this.transport = TransportSrv.create();
+   }
+
+
+   //---------------- SERVER ACTIONS -------------------------------------------
    this.reset = () => {
       this.loading = true;
 
@@ -70,10 +87,14 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv){
 
 
    this.add = (transport) => {
+      this.loading = true;
       transport.$save()
-         .then()
-         .catch()
-         .finally();
+         .then((data) => transport = TransportSrv.create())
+         .catch((err) => console.error(err))
+         .finally(() => {
+            this.loding = false;
+            $state.go('transports.list');
+         });
    };
 
    this.setStatus = (transport) => {

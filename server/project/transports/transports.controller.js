@@ -14,6 +14,13 @@ module.exports = () => {
          .catch(err => res.status(500).send('Something went wrong during archiviation ['+ err +']'));
    }
 
+   function getById(req, res){
+      Transport.findById(req.params.id).exec()
+         .then((data)=> res.status(200).send(data))
+         .catch((err) => console.error(err));
+
+   }
+
    function reset(req, res){
       Transport.remove()
       .then(data => Transport.create(resetList))
@@ -54,6 +61,7 @@ module.exports = () => {
 
    return {
       archive: archive,
+      getById: getById,
       reset: reset,
       save: save,
       query: query,

@@ -33,6 +33,8 @@ angular.module('tm', [
 
          .state('transports.add', {
             templateUrl: 'project/transport/my-form.html',
+            controller: 'TransportCtrl',
+            controllerAs: 'TransportCtrl',
             url: '/add/:id',
          });
 

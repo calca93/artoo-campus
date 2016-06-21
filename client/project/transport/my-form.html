@@ -1,121 +1,126 @@
 
-<form name="form"  ng-submit="TransportCtrl.add(TransportCtrl.transport)" autocomplete="off" novalidate layout-margin >
+<div layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak>
+   <md-whiteframe class="md-whiteframe-5dp" flex="100" layout="column" layout-align="space-around stretch" layout-margin layout-padding>
+      <form name="form"  ng-submit="TransportCtrl.add(TransportCtrl.transport)" autocomplete="off" novalidate layout-margin >
 
-   <div layout="column" layout-align="center stretch" >
-      <h2 ng-model="TransportCtrl.formTitle">Insert/Modify Form</h2>
-   </div>
-
-   <!--//------------------------ COMMITTANT NAME ------------------------------------>
-   <div layout="column" layout-align="center stretch" >
-      <md-input-container class="md-block" flex='60'>
-         <label><i class="material-icons">domain</i> Company committant name</label>
-         <!--<label>Company committant name</label>-->
-         <input name="customer.name" ng-model="TransportCtrl.transport.customer" md-maxlength="20" required>
-         <div ng-messages="form.name.$error" role="alert" multiple>
-         <div ng-message="required" class="my-message">You must insert company committant name.</div>
-         <div ng-message="md-maxlength" class="my-message">Name must contain 20 characters max.</div>
+         <div layout="column" layout-align="center stretch" >
+            <h2 ng-show="TransportCtrl.isAnEdit">Edit Form</h2>
+            <h2 ng-hide="TransportCtrl.isAnEdit">New Form</h2>
          </div>
-      </md-input-container>
-   </div>
-   <!--//------------------------ START AND DESTINATION NAMES ------------------------------------>
-   <div layout-gt-xs="row" layout="column" layout-align="space-around" >
 
-      <div layout="column" layout-align="space-around" flex='100'>
-         <md-input-container class="md-block">
-            <label><i class="material-icons">flight_takeoff</i> Start Company</label>
-            <input name="start.name" ng-model="TransportCtrl.transport.start" required>
-            <div ng-messages="form.name.$error" role="alert" multiple>
-               <div ng-message="required" class="my-message">You must insert company name.</div>
-            </div>
-         </md-input-container>
-
-         <md-input-container class="md-block" >
-            <label><i class="material-icons">place</i> Complete start address</label>
-            <input name="start.address" ng-model="TransportCtrl.transport.placeLoad" required>
-            <div ng-messages="form.name.$error" role="alert" multiple>
-               <div ng-message="required" class="my-message">You must insert company address.</div>
-            </div>
-         </md-input-container>
-
-         <div layout="column" layout-align="space-around center">
-            <md-datepicker ng-model="TransportCtrl.transport.dateLoad"
-                        md-placeholder="Enter start date"
-                        md-min-date="minDate"
-                        md-date-filter="filterPredicate"
-                        md-open-on-focus>
-            </md-datepicker>
-            <md-input-container>
-               <label><i class="material-icons">access_time</i> Load</label>
-               <input type="time">
+         <!--//------------------------ COMMITTANT NAME ------------------------------------>
+         <div layout="column" layout-align="center stretch" >
+            <md-input-container class="md-block" flex='60'>
+               <label><i class="material-icons">domain</i> Company committant name</label>
+               <!--<label>Company committant name</label>-->
+               <input name="customer.name" ng-model="TransportCtrl.transport.customer" md-maxlength="20" required>
+               <div ng-messages="form.name.$error" role="alert" multiple>
+               <div ng-message="required" class="my-message">You must insert company committant name.</div>
+               <div ng-message="md-maxlength" class="my-message">Name must contain 20 characters max.</div>
+               </div>
             </md-input-container>
          </div>
+         <!--//------------------------ START AND DESTINATION NAMES ------------------------------------>
+         <div layout-gt-xs="row" layout="column" layout-align="space-around" >
 
-      </div>
-      <div layout="column" layout-align="space-around" flex='100'>
-         <md-input-container class="md-block" >
-            <label><i class="material-icons">flight_land</i> Destination Company</label>
-            <input name="destination.name" ng-model="TransportCtrl.transport.destination" required>
-            <div ng-messages="form.name.$error" role="alert" multiple>
-               <div ng-message="required" class="my-message">You must insert company name.</div>
-            </div>
-         </md-input-container>
-         <md-input-container class="md-block" >
-            <label><i class="material-icons">place</i> Complete destination address</label>
-            <input name="destination.address" ng-model="TransportCtrl.transport.placeUnload" required>
-            <div ng-messages="form.name.$error" role="alert" multiple>
-               <div ng-message="required" class="my-message">You must insert company address.</div>
-            </div>
-         </md-input-container>
+            <div layout="column" layout-align="space-around" flex='100'>
+               <md-input-container class="md-block">
+                  <label><i class="material-icons">flight_takeoff</i> Start Company</label>
+                  <input name="start.name" ng-model="TransportCtrl.transport.start" required>
+                  <div ng-messages="form.name.$error" role="alert" multiple>
+                     <div ng-message="required" class="my-message">You must insert company name.</div>
+                  </div>
+               </md-input-container>
 
-         <div layout="column" layout-align="space-around center">
-            <md-datepicker ng-model="TransportCtrl.transport.dateUnload"
-                           md-placeholder="Enter dest date"
-                           md-min-date="TransportCtrl.transport.dateLoad"
-                           md-date-filter="filterPredicate"
-                           md-open-on-focus>
-            </md-datepicker>
-            <md-input-container flex='30'>
-               <label><i class="material-icons">access_time</i> Unload</label>
-               <input type="time">
+               <md-input-container class="md-block" >
+                  <label><i class="material-icons">place</i> Complete start address</label>
+                  <input name="start.address" ng-model="TransportCtrl.transport.placeLoad" required>
+                  <div ng-messages="form.name.$error" role="alert" multiple>
+                     <div ng-message="required" class="my-message">You must insert company address.</div>
+                  </div>
+               </md-input-container>
+
+               <div layout="column" layout-align="space-around center">
+                  <md-datepicker ng-model="TransportCtrl.transport.dateLoad"
+                              md-placeholder="Enter start date"
+                              md-min-date="minDate"
+                              md-date-filter="filterPredicate"
+                              md-open-on-focus>
+                  </md-datepicker>
+                  <md-input-container>
+                     <label><i class="material-icons">access_time</i> Load</label>
+                     <input type="time">
+                  </md-input-container>
+               </div>
+
+            </div>
+            <div layout="column" layout-align="space-around" flex='100'>
+               <md-input-container class="md-block" >
+                  <label><i class="material-icons">flight_land</i> Destination Company</label>
+                  <input name="destination.name" ng-model="TransportCtrl.transport.destination" required>
+                  <div ng-messages="form.name.$error" role="alert" multiple>
+                     <div ng-message="required" class="my-message">You must insert company name.</div>
+                  </div>
+               </md-input-container>
+               <md-input-container class="md-block" >
+                  <label><i class="material-icons">place</i> Complete destination address</label>
+                  <input name="destination.address" ng-model="TransportCtrl.transport.placeUnload" required>
+                  <div ng-messages="form.name.$error" role="alert" multiple>
+                     <div ng-message="required" class="my-message">You must insert company address.</div>
+                  </div>
+               </md-input-container>
+
+               <div layout="column" layout-align="space-around center">
+                  <md-datepicker ng-model="TransportCtrl.transport.dateUnload"
+                                 md-placeholder="Enter dest date"
+                                 md-min-date="TransportCtrl.transport.dateLoad"
+                                 md-date-filter="filterPredicate"
+                                 md-open-on-focus>
+                  </md-datepicker>
+                  <md-input-container flex='30'>
+                     <label><i class="material-icons">access_time</i> Unload</label>
+                     <input type="time">
+                  </md-input-container>
+               </div>
+
+            </div>
+         </div>
+         <md-divider></md-divider>
+         <div layout-gt-sm="row" layout="row" layout-align="center start">
+            <md-input-container class="md-block" flex='30'>
+               <label><i class="material-icons">fitness_center</i> Weigth</label>
+               <input name="weight" ng-model="TransportCtrl.transport.weight"  required>
+               <div ng-messages="form.name.$error" role="alert" multiple>
+               <div ng-message="required" class="my-message">You must insert weight.</div>
+               </div>
             </md-input-container>
+
+            <md-input-container class="md-block" flex='30'>
+               <label><i class="material-icons">euro_symbol</i> Cost</label>
+               <input name="cost" ng-model="TransportCtrl.transport.cost"  required>
+               <div ng-messages="form.name.$error" role="alert" multiple>
+               <div ng-message="required" class="my-message">You must insert cost.</div>
+               </div>
+            </md-input-container>
+
          </div>
 
-      </div>
-   </div>
-   <md-divider></md-divider>
-   <div layout-gt-sm="row" layout="row" layout-align="center start">
-      <md-input-container class="md-block" flex='30'>
-         <label><i class="material-icons">fitness_center</i> Weigth</label>
-         <input name="weight" ng-model="TransportCtrl.transport.weight"  required>
-         <div ng-messages="form.name.$error" role="alert" multiple>
-         <div ng-message="required" class="my-message">You must insert weight.</div>
+         <div layout="row" layout-align="space-between center">
+            <div>
+               <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid">
+                  Save
+               </md-button>
+               <md-button ng-click="TransportCtrl.resetForm(form)" class="md-primary">
+                  Reset
+               </md-button>
+               <md-progress-circular md-mode="indeterminate" ng-show="TransportCtrl.loading"></md-progress-circular>
+            </div>
+            <div>
+               <md-button ng-click="TransportCtrl.resetForm(form)" ui-sref="transports.list" class="md-primary">
+                  Back
+               </md-button>
+            </div>
          </div>
-      </md-input-container>
-
-      <md-input-container class="md-block" flex='30'>
-         <label><i class="material-icons">euro_symbol</i> Cost</label>
-         <input name="cost" ng-model="TransportCtrl.transport.cost"  required>
-         <div ng-messages="form.name.$error" role="alert" multiple>
-         <div ng-message="required" class="my-message">You must insert cost.</div>
-         </div>
-      </md-input-container>
-
-   </div>
-
-   <div layout="row" layout-align="space-between center">
-      <div>
-         <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid">
-            Save
-         </md-button>
-         <md-button ng-click="TransportCtrl.resetForm(form)" class="md-primary">
-            Reset
-         </md-button>
-         <md-progress-circular md-mode="indeterminate" ng-show="TransportCtrl.loading"></md-progress-circular>
-      </div>
-      <div>
-         <md-button ng-click="TransportCtrl.resetForm(form)" ui-sref="transports.list" class="md-primary">
-            Back
-         </md-button>
-      </div>
-   </div>
-</form>
+      </form>
+   </md-whiteframe>
+</div>
