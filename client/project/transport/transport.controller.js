@@ -80,7 +80,7 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
       this.loading = true;
       this.TransportSrv.query()
          .then((data) => this.transports = data)
-         .catch()
+         .catch((err) => console.error(err))
          .finally(() => this.loading = false);
    };
    this.query();
@@ -94,6 +94,8 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
          .finally(() => {
             this.loding = false;
             $state.go('transports.list');
+            console.log(transport);
+            this.query();
          });
    };
 

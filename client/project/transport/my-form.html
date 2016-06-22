@@ -40,7 +40,7 @@
                   </div>
                </md-input-container>
 
-               <div layout="column" layout-align="space-around center">
+               <div layout="row" layout-align="space-around center">
                   <md-datepicker ng-model="TransportCtrl.transport.dateLoad"
                               md-placeholder="Enter start date"
                               md-min-date="minDate"
@@ -58,19 +58,19 @@
                <md-input-container class="md-block" >
                   <label><i class="material-icons">flight_land</i> Destination Company</label>
                   <input name="destination.name" ng-model="TransportCtrl.transport.destination" required>
-                  <div ng-messages="form.name.$error" role="alert" multiple>
+                  <div ng-messages="form.destination.name.$error" role="alert" multiple>
                      <div ng-message="required" class="my-message">You must insert company name.</div>
                   </div>
                </md-input-container>
                <md-input-container class="md-block" >
                   <label><i class="material-icons">place</i> Complete destination address</label>
                   <input name="destination.address" ng-model="TransportCtrl.transport.placeUnload" required>
-                  <div ng-messages="form.name.$error" role="alert" multiple>
+                  <div ng-messages="form.destination.address.$error" role="alert" multiple>
                      <div ng-message="required" class="my-message">You must insert company address.</div>
                   </div>
                </md-input-container>
 
-               <div layout="column" layout-align="space-around center">
+               <div layout="row" layout-align="space-around center">
                   <md-datepicker ng-model="TransportCtrl.transport.dateUnload"
                                  md-placeholder="Enter dest date"
                                  md-min-date="TransportCtrl.transport.dateLoad"
@@ -85,11 +85,10 @@
 
             </div>
          </div>
-         <md-divider></md-divider>
          <div layout-gt-sm="row" layout="row" layout-align="center start">
             <md-input-container class="md-block" flex='30'>
                <label><i class="material-icons">fitness_center</i> Weigth</label>
-               <input name="weight" ng-model="TransportCtrl.transport.weight"  required>
+               <input name="weight" ng-model="TransportCtrl.transport.weight" ng-pattern="/^[0-9]/" required>
                <div ng-messages="form.name.$error" role="alert" multiple>
                <div ng-message="required" class="my-message">You must insert weight.</div>
                </div>
@@ -97,7 +96,7 @@
 
             <md-input-container class="md-block" flex='30'>
                <label><i class="material-icons">euro_symbol</i> Cost</label>
-               <input name="cost" ng-model="TransportCtrl.transport.cost"  required>
+               <input name="cost" ng-model="TransportCtrl.transport.cost" ng-pattern="/^[0-9]/" required>
                <div ng-messages="form.name.$error" role="alert" multiple>
                <div ng-message="required" class="my-message">You must insert cost.</div>
                </div>
