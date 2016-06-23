@@ -1,3 +1,10 @@
+<md-button style="position: fixed;" aria-label="Add a new postit" class="md-primary md-fab md-fab-bottom-right" ui-sref="transports.add">
+  <md-tooltip md-direction="top">
+    Add a transport
+  </md-tooltip>
+ <i class="fa fa-plus fa-lg"></i>
+</md-button>
+
 <md-toolbar layout="row" class="md-hue-3">
    <div class="md-toolbar-tools">
       <h1>List of Transports</h1>
@@ -6,14 +13,20 @@
 
 <md-content layout-margin layout-padding>
    <div layout-xs="column" layout="row" layout-align="space-between start">
-      <div layout-xs="column" layout="row" layout-align="start end">
-         <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ui-sref="transports.add">
-            New
-         </md-button>
+      <div layout="row" layout-align="start end">
+         <!--<md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ui-sref="transports.add">-->
+         <!--   New-->
+         <!--</md-button>-->
          <md-button class=" md-accent" ng-click="TransportCtrl.query()">
+            <md-tooltip md-direction="top">
+               Refresh the list
+            </md-tooltip>
             <label><i class="material-icons">cached</i> Refresh</label>
          </md-button>
          <md-button class=" md-accent" ng-click="TransportCtrl.reset()">
+            <md-tooltip md-direction="top">
+               Reset the database to default
+            </md-tooltip>
             <label><i class="material-icons">settings_backup_restore</i> Reset</label>
          </md-button>
       </div>
@@ -42,7 +55,7 @@
 
          <md-input-container flex='20'>
             <md-checkbox ng-model="selectedReverse" aria-label="Checkbox 1">
-               Reverse
+               <i class="material-icons">swap_vert</i>
             </md-checkbox>
          </md-input-container>
       </div>
@@ -66,9 +79,11 @@
                   </div>
                   <div layout="row" layout-align="space-between start">
                      <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="TransportCtrl.setStatus(transport)">
+                        <i class="material-icons">archive</i>
                         Archive
                      </md-button>
-                     <md-button class="md-primary" ng-disabled="" ui-sref="transports.add({id: transport._id})">
+                     <md-button class="md-primary" ui-sref="transports.add({id: transport._id})">
+                        <i class="material-icons">mode_edit</i>
                         Edit
                      </md-button>
                   </div>

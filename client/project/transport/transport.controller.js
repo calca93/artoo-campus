@@ -16,7 +16,7 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
 
    this.orderOptions = [ {
          prop: 'customer',
-         title: 'Committant name',
+         title: 'Committant',
       }, {
          prop: 'dateLoad',
          title: 'Date',

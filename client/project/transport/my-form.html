@@ -47,10 +47,10 @@
                               md-date-filter="filterPredicate"
                               md-open-on-focus>
                   </md-datepicker>
-                  <md-input-container>
-                     <label><i class="material-icons">access_time</i> Load</label>
-                     <input type="time">
-                  </md-input-container>
+                  <!--<md-input-container>-->
+                  <!--   <label><i class="material-icons">access_time</i> Load</label>-->
+                  <!--   <input type="time">-->
+                  <!--</md-input-container>-->
                </div>
 
             </div>
@@ -77,14 +77,15 @@
                                  md-date-filter="filterPredicate"
                                  md-open-on-focus>
                   </md-datepicker>
-                  <md-input-container flex='30'>
-                     <label><i class="material-icons">access_time</i> Unload</label>
-                     <input type="time">
-                  </md-input-container>
+                  <!--<md-input-container flex='30'>-->
+                  <!--   <label><i class="material-icons">access_time</i> Unload</label>-->
+                  <!--   <input type="time">-->
+                  <!--</md-input-container>-->
                </div>
 
             </div>
          </div>
+         <md-divider></md-divider>
          <div layout-gt-sm="row" layout="row" layout-align="center start">
             <md-input-container class="md-block" flex='30'>
                <label><i class="material-icons">fitness_center</i> Weigth</label>
@@ -105,18 +106,18 @@
          </div>
 
          <div layout="row" layout-align="space-between center">
-            <div>
+            <div layout="row" layout-align="space-between center">
                <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid">
                   Save
                </md-button>
-               <md-button ng-click="TransportCtrl.resetForm(form)" class="md-primary">
-                  Reset
+               <md-button ng-click="TransportCtrl.resetForm(form)"  ui-sref="transports.list"class="md-primary">
+                  Back
                </md-button>
                <md-progress-circular md-mode="indeterminate" ng-show="TransportCtrl.loading"></md-progress-circular>
             </div>
             <div>
-               <md-button ng-click="TransportCtrl.resetForm(form)" ui-sref="transports.list" class="md-primary">
-                  Back
+               <md-button ng-click="TransportCtrl.resetForm(form)" class="md-primary">
+                  Reset
                </md-button>
             </div>
          </div>
