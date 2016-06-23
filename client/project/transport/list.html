@@ -1,8 +1,8 @@
-<md-button style="position: fixed;" aria-label="Add a new postit" class="md-primary md-fab md-fab-bottom-right" ui-sref="transports.add">
-  <md-tooltip md-direction="top">
-    Add a transport
-  </md-tooltip>
- <i class="fa fa-plus fa-lg"></i>
+<md-button layout="row" layout-align="center center" style="position: fixed;" aria-label="Add a new postit" class="md-primary md-fab md-fab-bottom-right" ui-sref="transports.add">
+   <i class="material-icons">add</i>
+   <md-tooltip md-direction="top">
+      Add a transport
+   </md-tooltip>
 </md-button>
 
 <md-toolbar layout="row" class="md-hue-3">
@@ -17,17 +17,19 @@
          <!--<md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ui-sref="transports.add">-->
          <!--   New-->
          <!--</md-button>-->
-         <md-button class=" md-accent" ng-click="TransportCtrl.query()">
+         <md-button layout="row" class=" md-accent" ng-click="TransportCtrl.query()">
             <md-tooltip md-direction="top">
                Refresh the list
             </md-tooltip>
-            <label><i class="material-icons">cached</i> Refresh</label>
+            <i class="material-icons">cached</i>
+            &nbsp; Refresh
          </md-button>
-         <md-button class=" md-accent" ng-click="TransportCtrl.reset()">
+         <md-button layout="row" class=" md-accent" ng-click="TransportCtrl.reset()">
             <md-tooltip md-direction="top">
                Reset the database to default
             </md-tooltip>
-            <label><i class="material-icons">settings_backup_restore</i> Reset</label>
+            <i class="material-icons">settings_backup_restore</i>
+            &nbsp; Reset
          </md-button>
       </div>
       <div flex-xs="100" flex="40">
@@ -67,30 +69,30 @@
       <div layout="row" layout-align="start center">
          <md-progress-circular md-mode="indeterminate" ng-show="TransportCtrl.loading"></md-progress-circular>
       </div>
-            <md-list-item class="noright" ng-repeat="transport in TransportCtrl.transports | typeShow:selectedShowOptions | filter:search | orderBy:selectedOrderByOptions:selectedReverse" ng-click="">
-      <div layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak>
-         <md-whiteframe class="md-whiteframe-5dp" flex="100" layout="column" layout-align="space-around stretch" layout-margin layout-padding>
-               <div layout-gt-xs="column" layout-align="space-between start">
-                  <div>
-                     <h3>{{transport.customer}} - {{transport.cost}}€</h3>
-                     <p>From: <strong>{{transport.start}}</strong>, {{transport.placeLoad}} - <strong>{{transport.dateLoad | date : medium}}</strong></p>
-                     <p>To: <strong>{{transport.destination}}</strong>, {{transport.placeUnload}} - <strong>{{transport.dateUnload | date : medium}}</strong></p>
-                     <p>{{transport.weight}} quintals</p>
+      <md-list-item class="noright" ng-repeat="transport in TransportCtrl.transports | typeShow:selectedShowOptions | filter:search | orderBy:selectedOrderByOptions:selectedReverse" ng-click="">
+         <div layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak>
+            <md-whiteframe class="md-whiteframe-5dp" flex="100" layout="column" layout-align="space-around stretch" layout-margin layout-padding>
+                  <div layout-gt-xs="column" layout-align="space-between start">
+                     <div>
+                        <h3>{{transport.customer}} - {{transport.cost}}€</h3>
+                        <p>From: <strong>{{transport.start}}</strong>, {{transport.placeLoad}} - <strong>{{transport.dateLoad | date : medium}}</strong></p>
+                        <p>To: <strong>{{transport.destination}}</strong>, {{transport.placeUnload}} - <strong>{{transport.dateUnload | date : medium}}</strong></p>
+                        <p>{{transport.weight}} quintals</p>
+                     </div>
+                     <div layout="row" layout-align="space-between start">
+                        <md-button layout="row" ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="TransportCtrl.setStatus(transport)">
+                           <i  class="material-icons">archive</i>
+                           &nbsp; Archive
+                        </md-button>
+                        <md-button layout="row" class="md-primary" ui-sref="transports.add({id: transport._id})">
+                           <i class="material-icons">mode_edit</i>
+                           &nbsp; Edit
+                        </md-button>
+                     </div>
                   </div>
-                  <div layout="row" layout-align="space-between start">
-                     <md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="TransportCtrl.setStatus(transport)">
-                        <i class="material-icons">archive</i>
-                        Archive
-                     </md-button>
-                     <md-button class="md-primary" ui-sref="transports.add({id: transport._id})">
-                        <i class="material-icons">mode_edit</i>
-                        Edit
-                     </md-button>
-                  </div>
-               </div>
-         </md-whiteframe>
-      </div>
-            </md-list-item>
+            </md-whiteframe>
+         </div>
+      </md-list-item>
    </md-list>
 
 </md-content>

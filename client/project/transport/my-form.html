@@ -4,8 +4,8 @@
       <form name="form"  ng-submit="TransportCtrl.add(TransportCtrl.transport)" autocomplete="off" novalidate layout-margin >
 
          <div layout="column" layout-align="center stretch" >
-            <h2 ng-show="TransportCtrl.isAnEdit">Edit Form</h2>
-            <h2 ng-hide="TransportCtrl.isAnEdit">New Form</h2>
+            <h2 ng-show="TransportCtrl.isAnEdit">Edit Transport</h2>
+            <h2 ng-hide="TransportCtrl.isAnEdit">New Transport</h2>
          </div>
 
          <!--//------------------------ COMMITTANT NAME ------------------------------------>
@@ -110,7 +110,7 @@
                <md-button type="submit" class="md-raised md-primary" ng-disabled="form.$invalid">
                   Save
                </md-button>
-               <md-button ng-click="TransportCtrl.resetForm(form)"  ui-sref="transports.list"class="md-primary">
+               <md-button ng-click=""  ui-sref="transports.list"class="md-primary">
                   Back
                </md-button>
                <md-progress-circular md-mode="indeterminate" ng-show="TransportCtrl.loading"></md-progress-circular>
