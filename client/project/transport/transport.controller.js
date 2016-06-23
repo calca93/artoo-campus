@@ -16,7 +16,7 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
 
    this.orderOptions = [ {
          prop: 'customer',
-         title: 'Company name',
+         title: 'Committant name',
       }, {
          prop: 'dateLoad',
          title: 'Date',
@@ -89,13 +89,18 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
    this.add = (transport) => {
       this.loading = true;
       transport.$save()
-         .then((data) => transport = TransportSrv.create())
-         .catch((err) => console.error(err))
-         .finally(() => {
-            this.loding = false;
+         .then((data) => {
+            transport = TransportSrv.create();
+            return this.TransportSrv.query();
+         })
+         .then((data) => {
+            this.transports = data;
             $state.go('transports.list');
+         })
+         .catch(err => console.error(err))
+         .finally(() => {
+            this.loading = false;
             console.log(transport);
-            this.query();
          });
    };
 

@@ -7,6 +7,7 @@ const path = require('path');
 const development = (process.env.NODE_ENV === 'production') ? false : true;
 const settings = require('./settings');
 const expressValidator = require('express-validator');
+const helmet = require('helmet');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -33,6 +34,9 @@ app.use(bodyParser.json());
 
 // express validator (generare piu bad request possibili)
 app.use(expressValidator());
+
+// helmet middleware for security
+app.use(helmet());
 
 // use HTTP verbs such as PUT or DELETE where the client doesn't support others
 app.use(methodOverride());
