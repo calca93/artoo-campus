@@ -1,9 +1,8 @@
-angular.module('tm').controller('TransportCtrl', function(TransportSrv, $stateParams, $state){
-   this.TransportSrv = TransportSrv;
-   this.transport = TransportSrv.create();
-   var master = {};
+angular.module('tm').controller('ListCtrl', function(TransportSrv, $state){
+    this.TransportSrv = TransportSrv;//ENTRAMBI
+    this.transport = TransportSrv.create();//ENTRAMBI
 
-   this.showOptions = [{
+    this.showOptions = [{//LIST
          prop: 'all',
          title: 'All',
       },{
@@ -14,9 +13,9 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
          title: 'Archived',
       },];
 
-   this.orderOptions = [ {
+    this.orderOptions = [ {//LIST
          prop: 'customer',
-         title: 'Committant',
+         title: 'Customer',
       }, {
          prop: 'dateLoad',
          title: 'Date',
@@ -28,45 +27,7 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
          title: 'Cost',
       },];
 
-   var myDate = new Date();
-   this.minDate = new Date(
-      myDate.getFullYear(),
-      myDate.getMonth(),
-      myDate.getDate());
-
-   this.filterPredicate = function(date) {
-      var day = date.getDay();
-      return day !== 0 && day !== 6;
-   };
-
-   this.resetForm = (form) => {
-      this.loading = true;
-      this.transport = angular.copy(master);
-      form.$setPristine();
-      form.$setUntouched();
-      this.loading = false;
-   };
-
-   if($stateParams.id){
-      this.loading = true;
-      this.isAnEdit = true;
-      TransportSrv.getById($stateParams.id)
-         .then((data) => {
-            data.dateLoad = new Date(data.dateLoad);
-            data.dateUnload = new Date(data.dateUnload);
-            this.transport = data;
-         })
-         .catch((err) => console.error(err))
-         .finally(() => this.loading = false);
-   }
-   else {
-      this.isAnEdit = false;
-      this.transport = TransportSrv.create();
-   }
-
-
-   //---------------- SERVER ACTIONS -------------------------------------------
-   this.reset = () => {
+    this.reset = () => {//LIST
       this.loading = true;
 
       this.TransportSrv.reset()
@@ -76,7 +37,7 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
    };
 
 
-   this.query = () => {
+   this.query = () => {//LIST
       this.loading = true;
       this.TransportSrv.query()
          .then((data) => this.transports = data)
@@ -86,7 +47,7 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
    this.query();
 
 
-   this.add = (transport) => {
+   this.add = (transport) => {//LIST
       this.loading = true;
       transport.$save()
          .then((data) => {
@@ -104,7 +65,7 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
          });
    };
 
-   this.setStatus = (transport) => {
+   this.setStatus = (transport) => {//LIST
       this.loading = true;
       transport.$setStatus()
          .then(data => this.query())
@@ -112,6 +73,4 @@ angular.module('tm').controller('TransportCtrl', function(TransportSrv, $statePa
          .catch(err => console.error(err))
          .finally(() => this.loading = false);
    };
-
-
 });

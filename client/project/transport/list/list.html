@@ -12,35 +12,43 @@
 </md-toolbar>
 
 <md-content layout-margin layout-padding>
-   <div layout-xs="column" layout="row" layout-align="space-between start">
+   <div layout-xs="column" layout="row" layout-align="space-between start" layout-align-xs="space-between center">
       <div layout="row" layout-align="start end">
          <!--<md-button ng-hide="{{transport.archived}}" class="md-raised md-primary" ui-sref="transports.add">-->
          <!--   New-->
          <!--</md-button>-->
-         <md-button layout="row" class=" md-accent" ng-click="TransportCtrl.query()">
+         <md-button layout="row" class=" md-accent" ng-click="ListCtrl.query()">
             <md-tooltip md-direction="top">
                Refresh the list
             </md-tooltip>
             <i class="material-icons">cached</i>
             &nbsp; Refresh
          </md-button>
-         <md-button layout="row" class=" md-accent" ng-click="TransportCtrl.reset()">
+
+         <md-button layout="row" class=" md-accent" ng-click="ListCtrl.reset()">
             <md-tooltip md-direction="top">
                Reset the database to default
             </md-tooltip>
             <i class="material-icons">settings_backup_restore</i>
             &nbsp; Reset
          </md-button>
+
+         <div layout="row" layout-align="start center">
+            <md-progress-circular md-mode="indeterminate" ng-show="ListCtrl.loading"></md-progress-circular>
+         </div>
       </div>
-      <div flex-xs="100" flex="40">
-         <md-input-container class="md-block" flex='80'>
+
+      <div layout-align="center center" flex-xs="100" flex="35">
+
+         <md-input-container class="md-block" flex='100'>
             <label>Search</label>
             <input name="start.name" ng-model="search">
          </md-input-container>
-         <md-input-container flex='70'>
+
+         <md-input-container flex='40'>
             <label>Show</label>
             <md-select ng-model="selectedShowOptions" ng-init="selectedShowOptions = selectedShowOptions || 'progress'">
-               <md-option ng-repeat="option in TransportCtrl.showOptions" value="{{option.prop}}">
+               <md-option ng-repeat="option in ListCtrl.showOptions" value="{{option.prop}}">
                   {{option.title}}
                </md-option>
             </md-select>
@@ -49,27 +57,31 @@
          <md-input-container flex='40'>
             <label>Order By</label>
             <md-select ng-model="selectedOrderByOptions" ng-init="selectedOrderByOptions = selectedOrderByOptions || 'dateLoad'">
-               <md-option ng-repeat="option in TransportCtrl.orderOptions" value="{{option.prop}}">
+               <md-option ng-repeat="option in ListCtrl.orderOptions" value="{{option.prop}}">
                   {{option.title}}
                </md-option>
             </md-select>
          </md-input-container>
 
-         <md-input-container flex='20'>
-            <md-checkbox ng-model="selectedReverse" aria-label="Checkbox 1">
-               <i class="material-icons">swap_vert</i>
-            </md-checkbox>
-         </md-input-container>
+         <!--<md-input-container flex='20'>-->
+         <!--   <md-checkbox ng-model="selectedReverse" aria-label="Checkbox 1">-->
+         <!--      <i class="material-icons">swap_vert</i>-->
+         <!--   </md-checkbox>-->
+         <!--</md-input-container>-->
+
+         <md-button layout-align="center center" class="md-primary" ng-click="selectedReverse = !selectedReverse" flex='10'>
+            <md-tooltip md-direction="top">
+               Reverse order
+            </md-tooltip>
+            <i class="material-icons">swap_vert</i>
+         </md-button>
       </div>
    </div>
 
 
 
    <md-list flex>
-      <div layout="row" layout-align="start center">
-         <md-progress-circular md-mode="indeterminate" ng-show="TransportCtrl.loading"></md-progress-circular>
-      </div>
-      <md-list-item class="noright" ng-repeat="transport in TransportCtrl.transports | typeShow:selectedShowOptions | filter:search | orderBy:selectedOrderByOptions:selectedReverse" ng-click="">
+      <md-list-item class="noright" ng-repeat="transport in ListCtrl.transports | typeShow:selectedShowOptions | filter:search | orderBy:selectedOrderByOptions:selectedReverse" ng-click="">
          <div layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak>
             <md-whiteframe class="md-whiteframe-5dp" flex="100" layout="column" layout-align="space-around stretch" layout-margin layout-padding>
                   <div layout-gt-xs="column" layout-align="space-between start">
@@ -80,7 +92,7 @@
                         <p>{{transport.weight}} quintals</p>
                      </div>
                      <div layout="row" layout-align="space-between start">
-                        <md-button layout="row" ng-hide="{{transport.archived}}" class="md-raised md-primary" ng-click="TransportCtrl.setStatus(transport)">
+                        <md-button layout="row" ng-hide="{{transport.archived}}" class="md-primary" ng-click="ListCtrl.setStatus(transport)">
                            <i  class="material-icons">archive</i>
                            &nbsp; Archive
                         </md-button>

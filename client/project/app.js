@@ -20,21 +20,23 @@ angular.module('tm', [
 
          .state('transports', {
             abstract: true,
-            controller: 'TransportCtrl',
-            controllerAs: 'TransportCtrl',
+            controller: '',
+            controllerAs: '',
             template: '<div ui-view></div>',
             url: '',
          })
 
          .state('transports.list', {
-            templateUrl: 'project/transport/list.html',
+            templateUrl: 'project/transport/list/list.html',
+            controller: 'ListCtrl',
+            controllerAs: 'ListCtrl',
             url: '/',
          })
 
          .state('transports.add', {
-            templateUrl: 'project/transport/my-form.html',
-            controller: 'TransportCtrl',
-            controllerAs: 'TransportCtrl',
+            templateUrl: 'project/transport/form/form.html',
+            controller: 'FormCtrl',
+            controllerAs: 'FormCtrl',
             url: '/add/:id',
          });
 
