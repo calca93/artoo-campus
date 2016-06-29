@@ -22,7 +22,7 @@ npm install
 ```
 
 ## Project
-Transport Manager
+Transport Manager T-BOARD
 
 ### Entities
 * Transport
